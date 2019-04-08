@@ -157,8 +157,8 @@ function fastUpdate(){
 function updateText(){
 	doc_pot.innerHTML = a_pot;
 	doc_leader.innerHTML = a_leader;	
-	doc_leaderReward.innerHTML = a_pot * a_leaderReward / 100;
-	doc_throneReward.innerHTML = a_pot * a_throneReward / 100;
+	doc_leaderReward.innerHTML = parseFloat(a_pot * a_leaderReward / 100).toFixed(4);
+	doc_throneReward.innerHTML = parseFloat(a_pot * a_throneReward / 100).toFixed(4);
 	doc_bid.innerHTML = a_bid;
 	doc_number.innerHTML = a_number;
 }
