@@ -543,9 +543,6 @@ function checkHash(txhash, eventname) {
 var logboxscroll = document.getElementById('logboxscroll');
 var eventlogdoc = document.getElementById("eventlog");
 
-event GameBid (address indexed player, uint eth, uint number, uint pot, uint winnerShare);
-	event GameEnd (address indexed player, uint leaderReward, uint throneReward, uint number);
-
 function runLog(){
 	ranLog = true;
 	myContract.allEvents({ fromBlock: startBlock, toBlock: 'latest' }).get(function(error, result){
