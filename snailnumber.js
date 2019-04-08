@@ -160,6 +160,7 @@ function updateText(){
 	doc_leaderReward.innerHTML = a_pot * a_leaderReward / 100;
 	doc_throneReward.innerHTML = a_pot * a_throneReward / 100;
 	doc_bid.innerHTML = a_bid;
+	doc_number.innerHTML = a_number;
 }
 
 //Changes u_updateLog to true, manual choice in case event watching fails
