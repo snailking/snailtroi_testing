@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Title, Favicon -->
+		<title>SnailTroi</title>
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon">		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="theme_bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="theme_animista.css">
+		<link rel="stylesheet" type="text/css" href="theme_snailtroi.css">		
+	</head>
+	
+	<body align="center">
+		<!-- TITLE -->
+		<div class="info img-border2">
+			<div class="row">
+				<div class="col-sm">
+					<img src="img/number_logo.png">
+				</div>
+				<div class="col-sm" align="right">
+					<img class="img-help2" src="img/question_circle.png" onclick="showModal(help_1_modal)"></a>
+					<a href="https://etherscan.io/address/0x71a42fd60323204912468cd32a8283ed5d45a28f" target="_blank"><img class="img-help2" src="img/contract_circle.png"></a>
+					<a href="https://discord.gg/JU8P4Ru" target="_blank"><img class="img-help2" src="img/discord_circle.png"></a>
+					<a href="https://twitter.com/EtherSnailFarm" target="_blank"><img class="img-help2" src="img/twitter_circle.png"></a>
+					<a href="https://reddit.com/r/snailthrone" target="_blank"><img class="img-help2" src="img/reddit_circle.png"></a>
+					<a href="https://medium.com/@thesnailking/time-to-rethink-fomo-games-again-885788cc794c" target="_blank"><img class="img-help2" src="img/medium_circle.png"></a>
+					<a href="https://t.me/snailthrone" target="_blank"><img class="img-help2" src="img/telegram_circle.png"></a>
+					<a href="https://snailking.github.io/snailthrone" target="_blank"><img class="img-help2" src="img/snailthrone_circle.png"></a>
+				</div>
+			</div>
+		</div>
+		<!-- MAIN -->
+		<div class="jumbotron" align="center">
+			<div class="container">
+				<h1 style="display: inline-block; vertical-align: middle;"><span id="pot">???</span></h1> <img src="img/ether.png" height="48px"> 
+				<h2><span id="timer">??:??:??</span></h2>
+			</div><br>
+			<div class="row">
+				<div class="col-sm info info2">
+					<h3><span id="leaderreward">??????</span> ETH</h3>
+					<h5>to <span id="leader">0x????</span></h5>
+				</div>
+				<div class="col-sm info info2">
+					<h3><span id="thronereward">??????</span> ETH</h3>
+					<h5>to SnailThrone</h5>
+				</div>
+			</div><br>
+			<div class="info">
+				<h3 align="center">BID OVER <span id="bid">??????</span> ETH TO TAKE THE LEAD</h3>
+			</div><br>
+			<div class="row">
+				<div class="col-sm">
+					<h4>Your Number:</h4>
+					<input type="text" id="fieldNumber" value="1000" size="3">
+					<h5>(between 300 and 3000)</h5>
+				</div>
+				<div class="col-sm">
+					<h4>Your Bid:</h4>
+					<input type="text" id="fieldEther" value="0.01" size="3">
+					<h5>(the earlier the bid, the bigger the reward)</h5>
+				</div>
+			</div><br>
+			<button class="btn btn-lg btn-info" onclick="webBid()">BID</button>
+			<br><br>
+			<div class="info">
+				<h3>YOU WILL GET APPROXIMATELY <span id="plannedreward">??????</span> ETH IF YOU WIN</h3>
+			</div>
+		</div>
+		<!-- REFERRAL -->
+		<div class="jumbotron" align="center">
+			<div class="info">
+				<h3>Current Number: <span id="number">????</span></h3>
+			</div>
+		</div>
+		<!-- LOG -->
+		<div class="jumbotron info">
+			<div class="row">
+				<div class="col-sm">
+					<h3 style="display: inline-block;">EVENTS</h3>
+				</div>
+				<div class="col-sm" align="right">
+					<button class="btn btn-info" onclick="runLog()">Get Past Events</button>
+				</div>
+			</div>
+			<div class="scroll-box info" id="logboxscroll">
+				<p><span id="eventlog">[Waiting for events...]</span></p>
+			</div>
+		</div><br>
+		<!-- INFO -->
+		<div class="jumbotron">
+			<div class="info" align="center">
+				<h3>How To Play</h3>
+			</div><br>
+			<h5>SnailNumber is a 24 hours long mini-game to let the community influence development.</h5>
+			<br>
+			<h5>Pick any number between 300 and 3000, and bid more than the previous maximum bid.</h5>
+			<h5>If the clock ticks to 0 without anyone else outbidding you, your number will be used in SnailTroi.</h5>
+			<h5>Not only that: you'll win part of the pot!</h5>
+			<br>
+			<h5>The pot is split between the winner and SnailThrone.</h5>
+			<h5>The share of this split starts at 100% for the winner and 0% for SnailThrone.</h5>
+			<h5>Then it decreases gradually, until 0% for the winner and 100% for SnailThrone.</h5>
+			<br>
+			<div class="info">
+				<h5>IN SHORT:</h5>
+			</div>
+			<h5>The earlier you bid, the bigger rewards.</h5>
+			<h5>Be the leader when the clock hits 0, and you win.</h5>
+			<h5>The number you pick has no bearing on your chances of victory. It's purely a magic number for the NEXT game: SnailTroi.</h5>
+			<br>
+			<div class="info">
+				<h5>Wonder what SnailThrone is?</h5>
+			</div>
+			<h5>SnailThrone is the master snail game, where holders can earn dividends from other snail games.</h5>
+			<h5>Check out SnailThrone here: <a href="https://snailking.github.io/snailthrone">SNAILTHRONE</a></h5>
+		</div>
+		<!-- JAVASCRIPT -->
+		<script src="snailnumber.js"></script>				
+		<script>
+			initUpdate();
+		</script>		
+	</body>
+</html>
