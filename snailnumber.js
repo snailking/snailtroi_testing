@@ -286,7 +286,7 @@ function updateFieldNumber(){
 //Ether input on bid
 function updateFieldEther(){
 	f_ether = document.getElementById('fieldEther').value;
-	if(f_ether < a_bid){
+	if(f_ether <= a_bid){
 		f_ether = parseFloat(a_bid + 0.001).toFixed(3);
 		document.getElementById('fieldEther').value = f_ether;
 	}
