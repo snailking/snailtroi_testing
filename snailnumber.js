@@ -159,7 +159,6 @@ function updateText(){
 	doc_leader.innerHTML = a_leader;	
 	doc_leaderReward.innerHTML = a_pot * a_leaderReward / 100;
 	doc_throneReward.innerHTML = a_pot * a_throneReward / 100;
-	doc_plannedReward.innerHTML = a_plannedReward;
 	doc_bid.innerHTML = a_bid;
 }
 
@@ -202,11 +201,11 @@ function updateTimer(){
 	var _timer = b_timerEnd - (_blocktime / 1000);
 	
 	if(_timer > 0){
-		var _hours = Math.floor(_timer / 3600000);
+		var _hours = Math.floor(_timer / 3600);
 		if(_hours < 10) { _hours = "0" + _hours }
-		var _minutes = Math.floor((_timer % 3600000) / 60000);
+		var _minutes = Math.floor((_timer % 3600) / 60);
 		if(_minutes < 10) { _minutes = "0" + _minutes }
-		var _seconds = Math.floor(((_timer % 3600000) % 60000) / 1000);
+		var _seconds = parseFloat((a_downtime % 3600) % 60).toFixed(0);
 		if(_seconds < 10) { _seconds = "0" + _seconds }
 			
 		doc_timer.innerHTML = _hours + ":" + _minutes + ":" + _seconds;
@@ -267,6 +266,7 @@ function updateShare(){
 function updatePlannedReward(){
 	a_plannedReward = (parseFloat(a_pot) + parseFloat(f_ether)) * (a_share - 1) / 100; //-1 to account for tx lag. Better estimate too low than too high
 	if(a_plannedReward < 0) { a_plannedReward = 0; }
+	doc_plannedReward.innerHTML = parseFloat(a_plannedReward).toFixed(4);
 }
 
 /* LOCAL FIELD INPUT */
@@ -303,9 +303,12 @@ function webBid(){
 
 abiDefinition=[{"constant": false,"inputs": [{"name": "_number","type": "uint256"}],"name": "Bid","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": false,"inputs": [],"name": "End","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": false,"inputs": [],"name": "EscapeHatch","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "number","type": "uint256"},{"indexed": false,"name": "pot","type": "uint256"},{"indexed": false,"name": "winnerShare","type": "uint256"}],"name": "GameBid","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "leaderReward","type": "uint256"},{"indexed": false,"name": "throneReward","type": "uint256"},{"indexed": false,"name": "number","type": "uint256"}],"name": "GameEnd","type": "event"},{"inputs": [],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"constant": true,"inputs": [],"name": "bid","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputeShare","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "leader","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "number","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "pot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "shareToThrone","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "shareToWinner","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "timerEnd","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "timerStart","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"}]
 
+var contractAbi = web3.eth.contract(abiDefinition);
+var myContract = contractAbi.at(contractAddress);
+
 function Bid(_number,eth,callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
+
     var outputData = myContract.Bid.getData(_number);
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
@@ -321,8 +324,7 @@ function Bid(_number,eth,callback){
 
 
 function End(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.End.getData();
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -338,8 +340,7 @@ function End(callback){
 
 
 function EscapeHatch(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.EscapeHatch.getData();
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -355,8 +356,7 @@ function EscapeHatch(callback){
 
 
 function bid(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.bid.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -372,8 +372,7 @@ function bid(callback){
 
 
 function ComputeShare(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.ComputeShare.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -389,8 +388,7 @@ function ComputeShare(callback){
 
 
 function leader(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.leader.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -406,8 +404,7 @@ function leader(callback){
 
 
 function number(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.number.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -423,8 +420,7 @@ function number(callback){
 
 
 function pot(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.pot.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -440,8 +436,7 @@ function pot(callback){
 
 
 function shareToThrone(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.shareToThrone.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -457,8 +452,7 @@ function shareToThrone(callback){
 
 
 function shareToWinner(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.shareToWinner.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -474,8 +468,7 @@ function shareToWinner(callback){
 
 
 function timerEnd(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.timerEnd.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -491,8 +484,7 @@ function timerEnd(callback){
 
 
 function timerStart(callback){
-    var contractAbi = web3.eth.contract(abiDefinition);
-    var myContract = contractAbi.at(contractAddress);
+
     var outputData = myContract.timerStart.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
