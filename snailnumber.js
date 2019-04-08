@@ -205,7 +205,7 @@ function updateTimer(){
 		if(_hours < 10) { _hours = "0" + _hours }
 		var _minutes = Math.floor((_timer % 3600) / 60);
 		if(_minutes < 10) { _minutes = "0" + _minutes }
-		var _seconds = parseFloat((a_downtime % 3600) % 60).toFixed(0);
+		var _seconds = parseFloat((_timer % 3600) % 60).toFixed(0);
 		if(_seconds < 10) { _seconds = "0" + _seconds }
 			
 		doc_timer.innerHTML = _hours + ":" + _minutes + ":" + _seconds;
