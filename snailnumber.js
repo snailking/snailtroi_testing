@@ -109,6 +109,8 @@ var c_maxNumber = 3000;
 var b_timerStart;
 var b_timerEnd;
 
+var d_end = true;
+
 var f_ether = 0;
 var f_number = 0;
 var a_plannedReward = 0;
@@ -164,6 +166,11 @@ function updateText(){
 	doc_throneReward.innerHTML = parseFloat(a_pot * a_throneReward / 100).toFixed(4);
 	doc_bid.innerHTML = a_bid;
 	doc_number.innerHTML = a_number;
+	if(d_end == false) {
+		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">BID</button>';
+	} else {
+		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">END</button>';
+	}
 }
 
 //Changes u_updateLog to true, manual choice in case event watching fails
@@ -213,10 +220,12 @@ function updateTimer(){
 		if(_seconds < 10) { _seconds = "0" + _seconds }
 			
 		doc_timer.innerHTML = _hours + ":" + _minutes + ":" + _seconds;
-		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">BID</button>';
+		d_end = false;
+		
 	} else {
 		doc_timer.innerHTML = "Game Over!"
-		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">END</button>';
+		d_end = true;
+		
 	}
 }
 
