@@ -30,6 +30,8 @@ window.addEventListener('load', async () => {
         window.web3 = new Web3(web3.currentProvider);
         // Acccounts always exposed
         //web3.eth.sendTransaction({/* ... */});
+		mainUpdate();
+		fastUpdate();
     }
     // Non-dapp browsers...
     else {
@@ -169,7 +171,7 @@ function updateText(){
 	if(d_end == false) {
 		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">BID</button>';
 	} else {
-		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">END</button>';
+		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webEnd()">END</button>';
 	}
 }
 
