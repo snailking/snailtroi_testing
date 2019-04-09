@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Title, Favicon -->
+		<title>SnailTroi</title>
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon">		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="theme_bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="theme_animista.css">
+		<link rel="stylesheet" type="text/css" href="theme_snailtroi.css">		
+	</head>
+	
+	<body align="center">
+		<!-- TITLE -->
+		<div class="info img-border2">
+			<div class="row">
+				<div class="col-sm">
+					<img src="img/troi_logo.png">
+				</div>
+				<div class="col-sm" align="right">
+					<img class="img-help2" src="img/question_circle.png" onclick="showModal(help_1_modal)"></a>
+					<a href="https://etherscan.io/address/0x71a42fd60323204912468cd32a8283ed5d45a28f" target="_blank"><img class="img-help2" src="img/contract_circle.png"></a>
+					<a href="https://discord.gg/JU8P4Ru" target="_blank"><img class="img-help2" src="img/discord_circle.png"></a>
+					<a href="https://twitter.com/EtherSnailFarm" target="_blank"><img class="img-help2" src="img/twitter_circle.png"></a>
+					<a href="https://reddit.com/r/snailthrone" target="_blank"><img class="img-help2" src="img/reddit_circle.png"></a>
+					<a href="https://medium.com/@thesnailking/time-to-rethink-fomo-games-again-885788cc794c" target="_blank"><img class="img-help2" src="img/medium_circle.png"></a>
+					<a href="https://t.me/snailthrone" target="_blank"><img class="img-help2" src="img/telegram_circle.png"></a>
+					<a href="https://snailking.github.io/snailthrone" target="_blank"><img class="img-help2" src="img/snailthrone_circle.png"></a>
+				</div>
+			</div>
+		</div>
+		<!-- MAIN -->
+		<div class="jumbotron" align="center">
+			<div class="container">
+				<h1 style="display: inline-block; vertical-align: middle;"><span id="troichest">???</span></h1> <img src="img/ether.png" height="48px"> 
+			</div><br>
+			<div class="row">
+				<div class="col-sm info info2">
+					<h3>DOOMCLOCK - <span id="doomreward">??????</span> ETH</h3>
+					<h3><span id="doomtimer">??:??:??</span></h3><br>
+					<h4>Doom Leader: <span id="doomleader">??</span></h4>
+					<h5>Grow for <span id="doombid">??</span> ETH to lead</h5>
+				</div>
+				<div class="col-sm info info2">
+					<br>
+					<h1>BONUS</h2>
+					<h1><span id="bonus">?.????%</span></h2>
+					<br>
+				</div>
+				<div class="col-sm info info2">
+					<h3>DAILY - <span id="dailyreward">??????</span> ETH</h3>
+					<h3><span id="dailytimer">??:??:??</span></h3><br>
+					<h4>Daily Leader: <span id="dailyleader">??</span></h4>
+					<h5>Grow for <span id="dailybid">??</span> ETH to lead</h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/tree.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="troisize">???</span> (<span id="ethperday">???</span> ETH per day)</h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5><input type="text" id="fieldBuy" value="0.02" size="3"> ETH to get <span id="troigrow">???</span> Troi <button class="btn btn-info" onclick="webGrowTroi()">GROW TROI</button></h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/acorn.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="frootreward">???</span> (Last Harvest: <span id="lastfroot">??</span> ago)</h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5>Total Bonus: <span id="totalbonus">??</span>% <button class="btn btn-info" onclick="webHarvestFroot">HARVEST FROOT</button></h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/ether.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="playerbalance">???</span></h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5><button class="btn btn-info" onclick="webWithdrawBalance">WITHDRAW BALANCE</button></h5>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-sm info info2">
+					<img src="img/king0.png" height="96px">
+					<h4>Owner: <span id="kingOwner0">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(0)">GET BLUE KING</button>
+					<h5>Cost: <span id="kingCost0">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<img src="img/king1.png" height="96px">
+					<h4>Owner: <span id="kingOwner1">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(1)">GET RED KING</button>
+					<h5>Cost: <span id="kingCost1">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<img src="img/king2.png" height="96px">
+					<h4>Owner: <span id="kingOwner2">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(2)">GET GREEN KING</button>
+					<h5>Cost: <span id="kingCost2">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<img src="img/king3.png" height="96px">
+					<h4>Owner: <span id="kingOwner3">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(3)">GET PURPLE KING</button>
+					<h5>Cost: <span id="kingCost3">??</span> ETH</h5>
+				</div>
+			</div>
+		</div>
+		<!-- REFERRAL -->
+		<div class="jumbotron" align="center">
+			<div class="info">
+				<h3>Your Referral Link: <a class="t_link" id="playerreflink" onclick="copyRef()">[Loading...]</a></h3>
+				<input id="copytextthing" style="display:none;" type="text">
+			</div><br>
+			<h5>Referral Links are activated by owning at least <span id="snailreq">???</span> snails in SnailThrone.</h5>
+			<br><a href="https://snailking.github.io/snailthrone" target="_blank"><img class="pulse" height="64" src="img/snailthrone_circle.png"></a><br>
+			<br><h5>Get 20% extra ETH from each Harvest of your Referee!</h5>
+		</div>
+		<!-- LOG -->
+		<div class="jumbotron info">
+			<div class="row">
+				<div class="col-sm">
+					<h3 style="display: inline-block;">EVENTS</h3>
+				</div>
+				<div class="col-sm" align="right">
+					<button class="btn btn-info" onclick="runLog()">Get Past Events</button>
+				</div>
+			</div>
+			<div class="scroll-box info" id="logboxscroll">
+				<p><span id="eventlog">[Waiting for events...]</span></p>
+			</div>
+		</div>
+		<!-- THRONEPOT -->
+		<div class="jumbotron" align="center">
+			<div class="info">
+				<h3>ThronePot: <span id="thronepot">???</span> ETH</h3>
+			</div><br>
+			<h5>SnailThrone holders are rewarded with the ThronePot, sent automatically when the Daily ends.</h5>
+		</div>
+		<!-- INFO -->
+		<div class="jumbotron">
+			<div class="info" align="center">
+				<h3>How To Play</h3>
+			</div><br>
+			<h5>Grow your Troi with ETH to produce Froot. When you Harvest Froot, you earn ETH.</h5>
+			<br>
+			<h5>Your rewards start at a minimum rate of 1% daily. In addition, there is a global bonus growing up to 8% per day.</h5>
+			<h5>Harvest your Froot at the right time for the best rewards!</h5>
+			<br>
+			<h5>Own any of the Four Squirrel Kings to get special advantages:</h5>
+			<h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5>
+			<h5>- RED KING: doubles the effect you get from global bonus</h5>
+			<h5>- GREEN KING: 4% in divs whenever any player Harvests their Froot</h5>
+			<h5>- PURPLE KING: 4% of the pot when the Doomclock stops</h5>
+			<br>
+			<h5>Every King is unique, owned by a single player.</h5>
+			<h5>When another player buys a King, the previous owner receives his ETH back + bonus.</h5>
+			<h5>Kings start at 0.02 ETH, and raise in price by 0.02 ETH with every flip.</h5>
+			<h5>A player can own several Kings.</h5>
+			<br>
+			<h5>DAILY REWARD: spend the most ETH in one Growth to earn 2% of the total pot at the end of the day!</h5>
+			<br>
+			<h5>DOOMCLOCK: if the Doomclock ticks down to 0, Trois produce 10% less Froot.</h5>
+			<h5>To reset the Doomclock, Grow your Troi. Minimum starts at 0.001 ETH, and rises by 0.001 ETH per Growth.</h5>
+			<h5>Whoever spent enough to reset the Doomclock last wins 4% of the pot when the Doomclock stops!</h5>
+			<br>
+			<h5>SNAILTHRONE: SnailTroi is part of the SnailThrone ecosystem.</h5>
+			<h5>10% of the ETH invested in SnailTroi is saved in the thronePot as rewards to holders.</h5>
+			<h5>If there is at least 0.01 ETH in the pot, the thronePot is sent at the same time the Daily Reward is paid out.</h5>
+			<h5>Check out SnailThrone here: <a href="https://snailking.github.io/snailthrone">SNAILTHRONE</a></h5>
+		</div>
+
+		<!-- MODAL -->
+		<div id="modal_copy" class="modal">
+			<div class="modal-content">
+			<!--<span class="close">&times;</span>-->
+				<div id="modal_internal">
+				</div>
+			</div>
+		</div>
+		<!-- JAVASCRIPT -->
+		<script src="snailtroi.js"></script>				
+		<script>
+			initUpdate();
+		</script>		
+	</body>
+</html>
