@@ -121,6 +121,8 @@ var doc_throneReward = document.getElementById('thronereward');
 var doc_bid = document.getElementById('bid');
 var doc_number = document.getElementById('number');
 var doc_plannedReward = document.getElementById('plannedreward');
+
+document.getElementById('fieldNumber').value = Math.floor((Math.random() * 2700) + 300);
 	
 /* UPDATE */
 /*
