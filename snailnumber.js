@@ -121,6 +121,7 @@ var doc_throneReward = document.getElementById('thronereward');
 var doc_bid = document.getElementById('bid');
 var doc_number = document.getElementById('number');
 var doc_plannedReward = document.getElementById('plannedreward');
+var doc_action = document.getElementById('action');
 
 document.getElementById('fieldNumber').value = Math.floor((Math.random() * 2700) + 300);
 	
@@ -212,8 +213,10 @@ function updateTimer(){
 		if(_seconds < 10) { _seconds = "0" + _seconds }
 			
 		doc_timer.innerHTML = _hours + ":" + _minutes + ":" + _seconds;
+		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">BID</button>';
 	} else {
 		doc_timer.innerHTML = "Game Over!"
+		doc_action.innerHTML = '<button class="btn btn-lg btn-info" onclick="webBid()">END</button>';
 	}
 }
 
@@ -300,6 +303,12 @@ function updateFieldEther(){
 function webBid(){
 	var weitospend = web3.toWei(f_ether,'ether');
 	Bid(f_number, weitospend, function(){
+	});
+}
+
+//End
+function webEnd(){
+	End(function(){
 	});
 }
 
