@@ -184,6 +184,7 @@ var a_playerBalance = 0;
 var a_kingCost = [0.02, 0.02, 0.02, 0.02];
 var a_kingOwner = ["", "", "", ""];
 
+var a_playerSnail = 0;
 var c_snailReq = 0;
 var c_secondsPerDay = 86400;
 
@@ -250,6 +251,7 @@ function mainUpdate(){
 	updateFrootReward();
 	updateTotalBonus();
 	updatePlayerBalance();
+	updateReferral();
 	updateText();
 	setTimeout(mainUpdate, 4000);
 }
@@ -297,6 +299,16 @@ function startLogging(){
 function updateLog(){
 	if(u_updateEvent == true || p_keepUpdating == true){
 		runLog();
+	}
+}
+
+//Status of referral link for player
+function updateReferral(){
+	if(a_playerSnail >= c_snailReq){
+		a_refLink = window.location.protocol + '//' + window.location.host + window.location.pathname + "?ref=" + web3.eth.accounts[0];
+		playerreflinkdoc.innerHTML = a_refLink;
+	} else {
+		playerreflinkdoc.textContent = "INACTIVE (not enough snails)";
 	}
 }
 
