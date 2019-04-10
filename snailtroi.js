@@ -57,7 +57,7 @@ function removeModal(){
 function displayModalMessage(){
     modal.style.display = "block";
     modalContent.textContent = "copied link to clipboard";
-    setTimeout(removeModal,3000)
+    setTimeout(removeModal,2000)
 }
 
 //-- REFERRAL --//
