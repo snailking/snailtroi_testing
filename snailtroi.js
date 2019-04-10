@@ -518,7 +518,7 @@ function runLoop(_loop){
 }
 	
 //Check king cost
-function checkLordCost(_id){
+function checkKingCost(_id){
 	/*GetKingCost(_id, function(result) {
 		a_kingCost[_id] = formatEthValue(web3.fromWei(result,'ether'));
 	});*/
