@@ -252,6 +252,8 @@ function mainUpdate(){
 	updateTotalBonus();
 	updatePlayerBalance();
 	updateReferral();
+	runLoop(checkKingCost);
+	runLoop(checkKingOwner);
 	updateText();
 	setTimeout(mainUpdate, 4000);
 }
@@ -278,7 +280,7 @@ function updateText(){
 	doc_dailyBid.innerHTML = a_dailyBid;
 	doc_troiSize.innerHTML = a_troiSize;
 	doc_ethPerDay.innerHTML = a_ethPerDay;
-	doc_frootReward.innerHTML = a_frootReward;
+	doc_frootReward.innerHTML = parseFloat(a_frootReward).toFixed(6);
 	doc_totalBonus.innerHTML = a_totalBonus;
 	doc_playerBalance.innerHTML = a_playerBalance;
 	doc_frootReward.innerHTML = a_frootReward;
@@ -465,7 +467,7 @@ function updateDoomTimer(){
 
 //Current DoomReward
 function updateDoomReward(){
-	a_doomclockReward = parseFloat(a_troiChest * 0.04).toFixed(4);
+	a_doomReward = parseFloat(a_troiChest * 0.04).toFixed(4);
 }
 
 //Current DoomLeader
@@ -508,6 +510,27 @@ function updateDailyBid(){
 	});
 }
 
+//Loop function for Kings
+function runLoop(_loop){
+	for(i = 0; i < 4; i++){
+		_loop(i);
+	}
+}
+	
+//Check king cost
+function checkLordCost(_id){
+	/*GetKingCost(_id, function(result) {
+		a_kingCost[_id] = formatEthValue(web3.fromWei(result,'ether'));
+	});*/
+}
+
+//Check king owner
+function checkKingOwner(_id){
+	/*GetKingOwner(_id, function(result) {
+		a_kingOwner[_id] = "0x" + result.substring(26, 66);
+	});*/
+}
+
 
 /* LOCAL FIELD INPUT */
 
@@ -521,7 +544,7 @@ function localupdateFieldBuy(){
 //GrowTroi
 function webGrowTroi(){
 	var _ref = getQueryVariable('ref');
-	var weitospend = web3.toWei(f_ether,'ether');
+	var weitospend = web3.toWei(f_buy,'ether');
 	GrowTroi(_ref, weitospend, function(){
 	});
 }
