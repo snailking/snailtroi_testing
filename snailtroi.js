@@ -364,7 +364,7 @@ function updateTroiReward(){
 
 //ETH per day for player Troi Size
 function updateEthPerDay(){
-	a_ethPerDay = parseFloat((a_troiSize / a_troiReward) / 100).toFixed(6);
+	a_ethPerDay = parseFloat((a_troiSize * a_troiReward) / 100).toFixed(6);
 }
 
 //Update Last Froot
