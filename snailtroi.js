@@ -13,7 +13,7 @@ window.addEventListener('load', async () => {
 			/*web3.version.getNetwork(function(error, result) {
 				if (!error) {
 					if (result != "1") {
-						//console.log("Error: you must be on Ethereum Mainnet to use this website.");
+						////console.log("Error: you must be on Ethereum Mainnet to use this website.");
 					}
 				}
 			});*/
@@ -35,7 +35,7 @@ window.addEventListener('load', async () => {
     }
     // Non-dapp browsers...
     else {
-        ////////console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        //////////console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 });
 
@@ -96,7 +96,7 @@ var ranLog = false;
 
 function checkBlock(){
 	web3.eth.getBlockNumber(function (error, result){
-		////console.log("block number is " + result);
+		//////console.log("block number is " + result);
 		startBlock = parseInt(result - (172800 / blockSpan)); //~2 days
 		if(startBlock < launchBlock) { startBlock = launchBlock };
 	});
@@ -135,7 +135,7 @@ function date24() {
 //Get timestamp for log
 function dateLog(_blockNumber) {
 	d = new Date((timeLaunch + ((_blockNumber - launchBlock) * blockSpan)) * 1000);
-	//////////console.log(d);
+	////////////console.log(d);
 	datetext = d.toTimeString();
 	datetext = datetext.split(' ')[0];
 }
@@ -274,7 +274,7 @@ function updateText(){
 	doc_doomReward.innerHTML = a_doomReward;	
 	doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
 	doc_doomBid.innerHTML = a_doomBid;
-	doc_bonus.innerHTML = parseFloat(a_bonus / c_secondsPerDay).toFixed(3);
+	doc_bonus.innerHTML = parseFloat((a_bonus / c_secondsPerDay) / 100).toFixed(3);
 	doc_dailyReward.innerHTML = a_dailyReward;	
 	doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
 	doc_dailyBid.innerHTML = a_dailyBid;
@@ -384,7 +384,7 @@ function updateBonus(){
 //Total bonus
 function updateTotalBonus(){
 	var _now = Math.round((new Date()).getTime() / 1000);
-	a_totalBonus = parseFloat(((_now - a_lastFroot) + a_bonus) / c_secondsPerDay).toFixed(3);
+	a_totalBonus = parseFloat((((_now - a_lastFroot) + a_bonus) / c_secondsPerDay) / 100).toFixed(3);
 }
 
 //Number of Troi for ETH used
@@ -581,11 +581,11 @@ function BecomeKing(_id,eth,callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
         if(!error){
-            console.log('BecomeKing ',result);
+            //console.log('BecomeKing ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -598,11 +598,11 @@ function GrowTroi(_ref,eth,callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
         if(!error){
-            console.log('GrowTroi ',result);
+            //console.log('GrowTroi ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -615,11 +615,11 @@ function HarvestFroot(callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('HarvestFroot ',result);
+            //console.log('HarvestFroot ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -632,11 +632,11 @@ function StartGame(eth,callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
     function(error,result){
         if(!error){
-            console.log('StartGame ',result);
+            //console.log('StartGame ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -649,11 +649,11 @@ function WithdrawBalance(callback){
     var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('WithdrawBalance ',result);
+            //console.log('WithdrawBalance ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -666,11 +666,11 @@ function ComputeBonus(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('ComputeBonus ',web3.toDecimal(result));
+            //console.log('ComputeBonus ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -683,11 +683,11 @@ function ComputeHarvest(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('ComputeHarvest ',web3.toDecimal(result));
+            //console.log('ComputeHarvest ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -700,11 +700,11 @@ function dailyLeader(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('dailyLeader ',result);
+            //console.log('dailyLeader ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -717,11 +717,11 @@ function dailyMax(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('dailyMax ',web3.toDecimal(result));
+            //console.log('dailyMax ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -734,11 +734,11 @@ function dailyTimer(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('dailyTimer ',web3.toDecimal(result));
+            //console.log('dailyTimer ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -751,11 +751,11 @@ function dev(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('dev ',result);
+            //console.log('dev ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -768,11 +768,11 @@ function doomclockCost(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('doomclockCost ',web3.toDecimal(result));
+            //console.log('doomclockCost ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -785,11 +785,11 @@ function doomclockLeader(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('doomclockLeader ',result);
+            //console.log('doomclockLeader ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -802,11 +802,11 @@ function doomclockTimer(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('doomclockTimer ',web3.toDecimal(result));
+            //console.log('doomclockTimer ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -819,11 +819,11 @@ function gameActive(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('gameActive ',result);
+            //console.log('gameActive ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -836,11 +836,11 @@ function GetMyBalance(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('GetMyBalance ',web3.toDecimal(result));
+            //console.log('GetMyBalance ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -853,11 +853,11 @@ function GetMyLastHarvest(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('GetMyLastHarvest ',web3.toDecimal(result));
+            //console.log('GetMyLastHarvest ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -870,11 +870,11 @@ function GetMyReferrer(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('GetMyReferrer ',result);
+            //console.log('GetMyReferrer ',result);
             callback(result)
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -887,11 +887,11 @@ function GetSnail(_adr,callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('GetSnail ',web3.toDecimal(result));
+            //console.log('GetSnail ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -904,11 +904,11 @@ function GetTroi(adr,callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('GetTroi ',web3.toDecimal(result));
+            //console.log('GetTroi ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -921,11 +921,11 @@ function lastBonus(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('lastBonus ',web3.toDecimal(result));
+            //console.log('lastBonus ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -938,11 +938,11 @@ function thronePot(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('thronePot ',web3.toDecimal(result));
+            //console.log('thronePot ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -955,11 +955,11 @@ function troiChest(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('troiChest ',web3.toDecimal(result));
+            //console.log('troiChest ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -972,11 +972,11 @@ function troiReward(callback){
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            console.log('troiReward ',web3.toDecimal(result));
+            //console.log('troiReward ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            console.log('transaction failed with ',error.message)
+            //console.log('transaction failed with ',error.message)
         }
     });
 }
@@ -1022,7 +1022,7 @@ function runLog(){
 	ranLog = true;
 	myContract.allEvents({ fromBlock: startBlock, toBlock: 'latest' }).get(function(error, result){
 		if(!error){
-			//////console.log(result);
+			////////console.log(result);
 			var i = 0;
 			if(result.length > 0){ //check if we have events, if not stop the loop
 				p_keepUpdating = true;
@@ -1061,7 +1061,7 @@ function runLog(){
 			}
 		}
 		else{
-			////////console.log("problem!");
+			//////////console.log("problem!");
 		}
 	});
 }
@@ -1071,7 +1071,7 @@ function runLog(){
 var withdrewbalanceEvent = myContract.WithdrewBalance();
 withdrewbalanceEvent.watch(function(error, result){
     if(!error){
-		////////////////////console.log(result);
+		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " withdrew " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH to their wallet.";
@@ -1083,7 +1083,7 @@ withdrewbalanceEvent.watch(function(error, result){
 var newleaderEvent = myContract.NewLeader();
 newleaderEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " leads the Daily with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";	
@@ -1095,7 +1095,7 @@ newleaderEvent.watch(function(error, result){
 var harvestedfrootEvent = myContract.HarvestedFroot();
 harvestedfrootEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " harvested Froot from their " + result.args.size + " Troi. Reward: " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
@@ -1107,7 +1107,7 @@ harvestedfrootEvent.watch(function(error, result){
 var becamekingEvent = myContract.BecameKing();
 becamekingEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result.args.player) + ", crowned " + idKingToName(web3.toDecimal(result.args.king)) + " King for " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
@@ -1119,7 +1119,7 @@ becamekingEvent.watch(function(error, result){
 var resetclockEvent = myContract.ResetClock();
 resetclockEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
@@ -1131,7 +1131,7 @@ resetclockEvent.watch(function(error, result){
 var doomedEvent = myContract.Doomed();
 doomedEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result.args.leader) + " and Purple King " + formatEthAdr(result.args.king) + "earn " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
@@ -1143,7 +1143,7 @@ doomedEvent.watch(function(error, result){
 var wondailyEvent = myContract.WonDaily();
 wondailyEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " wins the daily reward of " + + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH!";
@@ -1155,7 +1155,7 @@ wondailyEvent.watch(function(error, result){
 var grewtroiEvent = myContract.GrewTroi();
 grewtroiEvent.watch(function(error, result){
     if(!error){
-		//////////console.log(result);
+		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " grew their Troi with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result.args.size) + " Troi.";	
@@ -1167,7 +1167,7 @@ grewtroiEvent.watch(function(error, result){
 var paidthroneEvent = myContract.PaidThrone();
 paidthroneEvent.watch(function(error, result){
     if(!error){
-		////////////////////console.log(result);
+		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " paid tribute to the SnailThrone! " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH has been sent.";
@@ -1179,7 +1179,7 @@ paidthroneEvent.watch(function(error, result){
 var boostedchestEvent = myContract.BoostedChest();
 boostedchestEvent.watch(function(error, result){
     if(!error){
-		////////////////////console.log(result);
+		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
 			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " makes a generous " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH donation to the troiChest.";
