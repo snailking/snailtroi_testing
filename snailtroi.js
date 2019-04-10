@@ -265,6 +265,7 @@ function fastUpdate(){
 //Updates all text from web3 calls
 
 function updateText(){
+	doc_thronePot.innerHTML = a_thronePot;
 	doc_troiChest.innerHTML = a_troiChest;
 	doc_doomReward.innerHTML = a_doomReward;	
 	doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
@@ -343,7 +344,7 @@ function updateTroiSize(){
 //Current Troi Reward (= ETH cost for one Troi)
 function updateTroiReward(){
 	troiReward(function(result) {
-		a_troiReward = result;
+		a_troiReward = web3.fromWei(result,'ether');
 	});
 }
 
@@ -381,7 +382,7 @@ function localupdateTroiGrow(){
 //Froot Reward
 function updateFrootReward(){
 	ComputeHarvest(function(result) {
-		a_frootReward = result;
+		a_frootReward = web3.fromWei(result,'ether');
 	});
 }
 	
@@ -465,7 +466,7 @@ function updateDoomLeader(){
 //Current DoomBid
 function updateDoomBid(){
 	doomclockCost(function(result) {
-		a_doomBid = result;
+		a_doomBid = formatEthValue(web3.fromWei(result,'ether'));
 	});
 }
 
@@ -491,7 +492,7 @@ function updateDailyLeader(){
 //Current DailyBid
 function updateDailyBid(){
 	dailyMax(function(result) {
-		a_dailyBid = result;
+		a_dailyBid = formatEthValue(web3.fromWei(result,'ether'));
 	});
 }
 
