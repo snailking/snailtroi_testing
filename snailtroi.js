@@ -184,7 +184,8 @@ var a_playerBalance = 0;
 var a_kingCost = [0.02, 0.02, 0.02, 0.02];
 var a_kingOwner = ["", "", "", ""];
 
-var a_snailReq = 0;
+var c_snailReq = 0;
+var c_secondsPerDay = 86400;
 
 var f_buy = 0;
 var f_troiGrow = 0;
@@ -266,11 +267,11 @@ function fastUpdate(){
 function updateText(){
 	doc_troiChest.innerHTML = a_troiChest;
 	doc_doomReward.innerHTML = a_doomReward;	
-	doc_doomLeader.innerHTML = a_doomLeader;
+	doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
 	doc_doomBid.innerHTML = a_doomBid;
-	doc_bonus.innerHTML = a_bonus;
+	doc_bonus.innerHTML = parseFloat(a_bonus / c_secondsPerDay).toFixed(3);
 	doc_dailyReward.innerHTML = a_dailyReward;	
-	doc_dailyLeader.innerHTML = a_dailyLeader;
+	doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
 	doc_dailyBid.innerHTML = a_dailyBid;
 	doc_troiSize.innerHTML = a_troiSize;
 	doc_ethPerDay.innerHTML = a_ethPerDay;
@@ -282,7 +283,7 @@ function updateText(){
 	
 	for(i = 0; i < 4; i++){
 		doc_kingCost[i].innerHTML = a_kingCost[i];
-		doc_kingOwner[i].innerHTML = a_kingOwner[i];
+		doc_kingOwner[i].innerHTML = formatEthAdr(a_kingOwner[i]);
 	}
 }
 
@@ -361,14 +362,14 @@ function updateLastFroot(){
 //Global bonus
 function updateBonus(){
 	ComputeBonus(function(result) {
-		a_bonus = result;
+		a_bonus = parseFloat(result * 8);
 	});
 }
 
 //Total bonus
 function updateTotalBonus(){
 	var _now = Math.round((new Date()).getTime() / 1000);
-	a_totalBonus = parseFloat(_now - a_lastFroot);
+	a_totalBonus = parseFloat(((_now - a_lastFroot) + a_bonus) / c_secondsPerDay).toFixed(3);
 }
 
 //Number of Troi for ETH used
