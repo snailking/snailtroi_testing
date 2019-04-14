@@ -252,6 +252,7 @@ function mainUpdate(){
 	updatePlayerBalance();
 	updateReferral();
 	updateLastFroot();
+	updateSnail();
 	runLoop(checkKingCost);
 	runLoop(checkKingOwner);
 	updateText();
@@ -282,7 +283,7 @@ function updateText(){
 	doc_ethPerDay.innerHTML = a_ethPerDay;
 	doc_frootReward.innerHTML = parseFloat(a_frootReward).toFixed(6);
 	doc_totalBonus.innerHTML = a_totalBonus;
-	doc_playerBalance.innerHTML = a_playerBalance;
+	doc_playerBalance.innerHTML = parseFloat(a_playerBalance).toFixed(6);
 	doc_lastFroot.innerHTML = computeLastFroot();
 	
 	for(i = 0; i < 4; i++){
@@ -335,6 +336,13 @@ function computeLastFroot(){
 		
 /* WEB3 CALLS */
 
+//Snails from SnailThrone
+function updateSnail(){
+	GetSnail(m_account, function(result) {
+		a_playerSnail = result;
+	});
+}
+
 //Current ETH address in use
 function updateEthAccount(){
 	m_account = web3.eth.accounts[0];
@@ -343,7 +351,7 @@ function updateEthAccount(){
 //Current player balance
 function updatePlayerBalance(){
 	GetMyBalance(function(result) {
-		a_playerBalance = result;
+		a_playerBalance = web3.fromWei(result,'ether');
 	});
 }
 	
