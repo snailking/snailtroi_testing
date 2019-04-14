@@ -1041,7 +1041,7 @@ function runLog(){
 							} else if(result[i].event == "WonDaily"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " wins the daily reward of " + + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH!";
 							} else if(result[i].event == "GrewTroi"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result[i].args.size) + " Troi.";							
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH, and now owns " + web3.toDecimal(result[i].args.size) + " Troi.";							
 							} else if(result[i].event == "PaidThrone"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " paid tribute to the SnailThrone! " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH has been sent.";										
 							} else if(result[i].event == "BoostedChest"){
