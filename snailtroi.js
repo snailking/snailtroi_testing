@@ -309,7 +309,7 @@ function updateLog(){
 
 //Change help box
 function changeHelpBox(_direction){
-	/*if(_direction == 0 && a_helpBox > 1){
+	if(_direction == 0 && a_helpBox > 1){
 		a_helpBox -= 1;
 	} else if(_direction == 1 && a_helpBox < 8){
 		a_helpBox += 1;
@@ -317,8 +317,8 @@ function changeHelpBox(_direction){
 	switch(a_helpBox){
 		case 1: doc_helpBox.innerHTML = '<h3>Grow your Troi with ETH to produce Froot.</h5><h5>When you Harvest Froot, you earn ETH.</h5><br><h5>Your rewards start at a minimum rate of 1% daily.</h5><h5>In addition, there is a global bonus growing up to 8% per day.</h5><br><h5>Harvest your Froot at the right time for the best rewards!</h5><br><h5 align="right">1/8</h5>';
 		case 2: doc_helpBox.innerHTML = '<h3>HOHO your Troi with ETH to produce Froot.</h5><h5>When you Harvest Froot, you earn ETH.</h5><br><h5>Your rewards start at a minimum rate of 1% daily.</h5><h5>In addition, there is a global bonus growing up to 8% per day.</h5><br><h5>Harvest your Froot at the right time for the best rewards!</h5><br><h5 align="right">2/8</h5>';
-		case 3:*/ doc_helpBox.innerHTML = '<h3>HAAA your Troi with ETH to produce Froot.</h5><h5>When you Harvest Froot, you earn ETH.</h5><br><h5>Your rewards start at a minimum rate of 1% daily.</h5><h5>In addition, there is a global bonus growing up to 8% per day.</h5><br><h5>Harvest your Froot at the right time for the best rewards!</h5><br><h5 align="right">3/8</h5>';
-	//}
+		case 3: doc_helpBox.innerHTML = '<h3>HAAA your Troi with ETH to produce Froot.</h5><h5>When you Harvest Froot, you earn ETH.</h5><br><h5>Your rewards start at a minimum rate of 1% daily.</h5><h5>In addition, there is a global bonus growing up to 8% per day.</h5><br><h5>Harvest your Froot at the right time for the best rewards!</h5><br><h5 align="right">3/8</h5>';
+	}
 }
 
 //Status of referral link for player
