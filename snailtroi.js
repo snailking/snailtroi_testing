@@ -1,4 +1,4 @@
-var contractAddress="0x7Aef84e70DC949dB2Fb493B898f3927fDDDDED23"; //Ropsten v6
+var contractAddress="0xD2e610293Ae3a191a2BA80fF29D74b4a326961e4"; //Ropsten v7
 
 //-- WEB3 DETECTION --//
 var web3;
@@ -185,8 +185,8 @@ var a_kingCost = [0.02, 0.02, 0.02, 0.02];
 var a_kingOwner = ["", "", "", ""];
 
 var a_playerSnail = 0;
-var c_snailReq = 0;
 var c_secondsPerDay = 86400;
+var c_snailReq = 420;
 
 var f_buy = 0;
 var f_troiGrow = 0;
@@ -207,7 +207,6 @@ var doc_ethPerDay = document.getElementById('ethperday');
 var doc_frootReward = document.getElementById('frootreward');
 var doc_totalBonus = document.getElementById('totalbonus');
 var doc_playerBalance = document.getElementById('playerbalance');
-var doc_snailReq = document.getElementById('snailreq');
 var doc_troiGrow = document.getElementById('troigrow');
 var doc_lastFroot = document.getElementById('lastfroot');
 
@@ -252,6 +251,7 @@ function mainUpdate(){
 	updateTotalBonus();
 	updatePlayerBalance();
 	updateReferral();
+	updateLastFroot();
 	runLoop(checkKingCost);
 	runLoop(checkKingOwner);
 	updateText();
@@ -283,7 +283,6 @@ function updateText(){
 	doc_frootReward.innerHTML = parseFloat(a_frootReward).toFixed(6);
 	doc_totalBonus.innerHTML = a_totalBonus;
 	doc_playerBalance.innerHTML = a_playerBalance;
-	doc_frootReward.innerHTML = a_frootReward;
 	doc_lastFroot.innerHTML = computeLastFroot();
 	
 	for(i = 0; i < 4; i++){
@@ -519,16 +518,16 @@ function runLoop(_loop){
 	
 //Check king cost
 function checkKingCost(_id){
-	/*GetKingCost(_id, function(result) {
+	GetKingCost(_id, function(result) {
 		a_kingCost[_id] = formatEthValue(web3.fromWei(result,'ether'));
-	});*/
+	});
 }
 
 //Check king owner
 function checkKingOwner(_id){
-	/*GetKingOwner(_id, function(result) {
+	GetKingOwner(_id, function(result) {
 		a_kingOwner[_id] = "0x" + result.substring(26, 66);
-	});*/
+	});
 }
 
 
@@ -570,268 +569,14 @@ function webBecomeKing(_id){
 
 /* CONTRACT ABI */
 
-abiDefinition=[{"constant": false,"inputs": [{"name": "_id","type": "uint256"}],"name": "BecomeKing","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "size","type": "uint256"}],"name": "GrewTroi","type": "event"},{"constant": false,"inputs": [{"name": "_ref","type": "address"}],"name": "GrowTroi","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": false,"inputs": [],"name": "HarvestFroot","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "NewLeader","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "size","type": "uint256"}],"name": "HarvestedFroot","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "king","type": "uint256"}],"name": "BecameKing","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "ResetClock","type": "event"},{"anonymous": false,"inputs": [{"indexed": false,"name": "leader","type": "address"},{"indexed": false,"name": "king","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "Doomed","type": "event"},{"constant": false,"inputs": [],"name": "StartGame","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "WonDaily","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "WithdrewBalance","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "PaidThrone","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "BoostedChest","type": "event"},{"payable": true,"stateMutability": "payable","type": "fallback"},{"inputs": [],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"constant": false,"inputs": [],"name": "WithdrawBalance","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "ComputeBonus","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputeHarvest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dailyLeader","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dailyMax","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dailyTimer","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dev","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockCost","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockLeader","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockTimer","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "gameActive","outputs": [{"name": "","type": "bool"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMyBalance","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMyLastHarvest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMyReferrer","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_adr","type": "address"}],"name": "GetSnail","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "adr","type": "address"}],"name": "GetTroi","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "lastBonus","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "thronePot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "troiChest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "troiReward","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"}]
+
+abiDefinition=[{"constant": true,"inputs": [],"name": "GetMyBalance","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputeHarvest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_id","type": "uint256"}],"name": "GetKingCost","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "adr","type": "address"}],"name": "GetTroi","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "ComputeBonus","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockTimer","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_adr","type": "address"}],"name": "GetSnail","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_id","type": "uint256"}],"name": "GetKingOwner","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dailyTimer","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [{"name": "_id","type": "uint256"}],"name": "BecomeKing","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": true,"inputs": [],"name": "GetMyLastHarvest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockLeader","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "dev","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "troiChest","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "WithdrawBalance","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": false,"inputs": [],"name": "StartGame","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": false,"inputs": [{"name": "_ref","type": "address"}],"name": "GrowTroi","outputs": [],"payable": true,"stateMutability": "payable","type": "function"},{"constant": true,"inputs": [],"name": "dailyLeader","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "troiReward","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "GetMyReferrer","outputs": [{"name": "","type": "address"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "lastBonus","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "thronePot","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": false,"inputs": [],"name": "HarvestFroot","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "dailyMax","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "gameActive","outputs": [{"name": "","type": "bool"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [],"name": "doomclockCost","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"inputs": [],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"payable": true,"stateMutability": "payable","type": "fallback"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "size","type": "uint256"}],"name": "GrewTroi","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "NewLeader","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "size","type": "uint256"}],"name": "HarvestedFroot","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"},{"indexed": false,"name": "king","type": "uint256"}],"name": "BecameKing","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "ResetClock","type": "event"},{"anonymous": false,"inputs": [{"indexed": false,"name": "leader","type": "address"},{"indexed": false,"name": "king","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "Doomed","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "WonDaily","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "WithdrewBalance","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "PaidThrone","type": "event"},{"anonymous": false,"inputs": [{"indexed": true,"name": "player","type": "address"},{"indexed": false,"name": "eth","type": "uint256"}],"name": "BoostedChest","type": "event"}]
 
 var contractAbi = web3.eth.contract(abiDefinition);
 var myContract = contractAbi.at(contractAddress);
 
-function BecomeKing(_id,eth,callback){
-
-    var outputData = myContract.BecomeKing.getData(_id);
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
-    function(error,result){
-        if(!error){
-            //console.log('BecomeKing ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function GrowTroi(_ref,eth,callback){
-    
-    
-    var outputData = myContract.GrowTroi.getData(_ref);
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
-    function(error,result){
-        if(!error){
-            //console.log('GrowTroi ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function HarvestFroot(callback){
-    
-    
-    var outputData = myContract.HarvestFroot.getData();
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('HarvestFroot ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function StartGame(eth,callback){
-    
-    
-    var outputData = myContract.StartGame.getData();
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
-    function(error,result){
-        if(!error){
-            //console.log('StartGame ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function WithdrawBalance(callback){
-    
-    
-    var outputData = myContract.WithdrawBalance.getData();
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('WithdrawBalance ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function ComputeBonus(callback){
-    
-    
-    var outputData = myContract.ComputeBonus.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('ComputeBonus ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function ComputeHarvest(callback){
-    
-    
-    var outputData = myContract.ComputeHarvest.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('ComputeHarvest ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function dailyLeader(callback){
-    
-    
-    var outputData = myContract.dailyLeader.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('dailyLeader ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function dailyMax(callback){
-    
-    
-    var outputData = myContract.dailyMax.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('dailyMax ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function dailyTimer(callback){
-    
-    
-    var outputData = myContract.dailyTimer.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('dailyTimer ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function dev(callback){
-    
-    
-    var outputData = myContract.dev.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('dev ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function doomclockCost(callback){
-    
-    
-    var outputData = myContract.doomclockCost.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('doomclockCost ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function doomclockLeader(callback){
-    
-    
-    var outputData = myContract.doomclockLeader.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('doomclockLeader ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function doomclockTimer(callback){
-    
-    
-    var outputData = myContract.doomclockTimer.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('doomclockTimer ',web3.toDecimal(result));
-            callback(web3.toDecimal(result))
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function gameActive(callback){
-    
-    
-    var outputData = myContract.gameActive.getData();
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('gameActive ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
 
 function GetMyBalance(callback){
-    
-    
     var outputData = myContract.GetMyBalance.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -840,66 +585,43 @@ function GetMyBalance(callback){
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
-function GetMyLastHarvest(callback){
-    
-    
-    var outputData = myContract.GetMyLastHarvest.getData();
+function ComputeHarvest(callback){
+    var outputData = myContract.ComputeHarvest.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            //console.log('GetMyLastHarvest ',web3.toDecimal(result));
+            //console.log('ComputeHarvest ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
-function GetMyReferrer(callback){
-    
-    
-    var outputData = myContract.GetMyReferrer.getData();
+function GetKingCost(_id,callback){
+    var outputData = myContract.GetKingCost.getData(_id);
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            //console.log('GetMyReferrer ',result);
-            callback(result)
-        }
-        else{
-            //console.log('transaction failed with ',error.message)
-        }
-    });
-}
-
-
-function GetSnail(_adr,callback){
-    
-    
-    var outputData = myContract.GetSnail.getData(_adr);
-    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            //console.log('GetSnail ',web3.toDecimal(result));
+            //console.log('GetKingCost ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
 function GetTroi(adr,callback){
-    
-    
     var outputData = myContract.GetTroi.getData(adr);
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -908,49 +630,148 @@ function GetTroi(adr,callback){
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
-function lastBonus(callback){
-    
-    
-    var outputData = myContract.lastBonus.getData();
+function ComputeBonus(callback){
+    var outputData = myContract.ComputeBonus.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            //console.log('lastBonus ',web3.toDecimal(result));
+            //console.log('ComputeBonus ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
-function thronePot(callback){
-    
-    
-    var outputData = myContract.thronePot.getData();
+function doomclockTimer(callback){
+    var outputData = myContract.doomclockTimer.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
         if(!error){
-            //console.log('thronePot ',web3.toDecimal(result));
+            //console.log('doomclockTimer ',web3.toDecimal(result));
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function GetSnail(_adr,callback){
+    var outputData = myContract.GetSnail.getData(_adr);
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('GetSnail ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function GetKingOwner(_id,callback){
+    var outputData = myContract.GetKingOwner.getData(_id);
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('GetKingOwner ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function dailyTimer(callback){
+    var outputData = myContract.dailyTimer.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('dailyTimer ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function BecomeKing(_id,eth,callback){
+    var outputData = myContract.BecomeKing.getData(_id);
+    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
+    function(error,result){
+        if(!error){
+            //console.log('BecomeKing ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function GetMyLastHarvest(callback){
+    var outputData = myContract.GetMyLastHarvest.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('GetMyLastHarvest ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function doomclockLeader(callback){
+    var outputData = myContract.doomclockLeader.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('doomclockLeader ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function dev(callback){
+    var outputData = myContract.dev.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('dev ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
 function troiChest(callback){
-    
-    
     var outputData = myContract.troiChest.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -959,15 +780,73 @@ function troiChest(callback){
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function WithdrawBalance(callback){
+    var outputData = myContract.WithdrawBalance.getData();
+    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('WithdrawBalance ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function StartGame(eth,callback){
+    var outputData = myContract.StartGame.getData();
+    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
+    function(error,result){
+        if(!error){
+            //console.log('StartGame ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function GrowTroi(_ref,eth,callback){
+    var outputData = myContract.GrowTroi.getData(_ref);
+    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData,value: eth},
+    function(error,result){
+        if(!error){
+            //console.log('GrowTroi ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function dailyLeader(callback){
+    var outputData = myContract.dailyLeader.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('dailyLeader ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
         }
     });
 }
 
 
 function troiReward(callback){
-    
-    
     var outputData = myContract.troiReward.getData();
     var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
     function(error,result){
@@ -976,10 +855,118 @@ function troiReward(callback){
             callback(web3.toDecimal(result))
         }
         else{
-            //console.log('transaction failed with ',error.message)
+            console.log('transaction failed with ',error.message)
         }
     });
 }
+
+
+function GetMyReferrer(callback){
+    var outputData = myContract.GetMyReferrer.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('GetMyReferrer ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function lastBonus(callback){
+    var outputData = myContract.lastBonus.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('lastBonus ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function thronePot(callback){
+    var outputData = myContract.thronePot.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('thronePot ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function HarvestFroot(callback){
+    var outputData = myContract.HarvestFroot.getData();
+    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('HarvestFroot ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function dailyMax(callback){
+    var outputData = myContract.dailyMax.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('dailyMax ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function gameActive(callback){
+    var outputData = myContract.gameActive.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('gameActive ',result);
+            callback(result)
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+function doomclockCost(callback){
+    var outputData = myContract.doomclockCost.getData();
+    var endstr=web3.eth.call({to:contractAddress, from:null, data: outputData},
+    function(error,result){
+        if(!error){
+            //console.log('doomclockCost ',web3.toDecimal(result));
+            callback(web3.toDecimal(result))
+        }
+        else{
+            console.log('transaction failed with ',error.message)
+        }
+    });
+}
+
+
+
 
 /* EVENT WATCH */
 
@@ -1032,25 +1019,25 @@ function runLog(){
 							startBlock = result[i].blockNumber; //store the last blocknumber to start next loop
 							dateLog(result[i].blockNumber);
 							if(result[i].event == "WithdrewBalance"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " withdrew " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH to their wallet.";								
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " withdrew " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH to their wallet.";								
 							} else if(result[i].event == "NewLeader"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " leads the Daily with " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";		
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " leads the Daily with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";		
 							} else if(result[i].event == "HarvestedFroot"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " harvested Froot from their " + result[i].args.size + " Troi. Reward: " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " harvested Froot from their " + result[i].args.size + " Troi. Reward: " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
 							} else if(result[i].event == "BecameKing"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result[i].args.player) + ", crowned " + idKingToName(web3.toDecimal(result[i].args.king)) + " King for " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";			
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result[i].args.player) + ", crowned " + idKingToName(web3.toDecimal(result[i].args.king)) + " King for " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";			
 							} else if(result[i].event == "ResetClock"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock with " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
 							} else if(result[i].event == "Doomed"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result[i].args.leader) + " and Purple King " + formatEthAdr(result[i].args.king) + "earn " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result[i].args.leader) + " and Purple King " + formatEthAdr(result[i].args.king) + "earn " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
 							} else if(result[i].event == "WonDaily"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " wins the daily reward of " + + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH!";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " wins the daily reward of " + + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH!";
 							} else if(result[i].event == "GrewTroi"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " grew their Troi with " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result[i].args.size) + " Troi.";							
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result[i].args.size) + " Troi.";							
 							} else if(result[i].event == "PaidThrone"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " paid tribute to the SnailThrone! " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH has been sent.";										
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " paid tribute to the SnailThrone! " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH has been sent.";										
 							} else if(result[i].event == "BoostedChest"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " makes a generous " + formatEthValue2(web3.fromWei(result[i].args.eth,'ether')) + " ETH donation to the troiChest.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " makes a generous " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH donation to the troiChest.";
 							}
 							logboxscroll.scrollTop = logboxscroll.scrollHeight;
 						}
@@ -1074,7 +1061,7 @@ withdrewbalanceEvent.watch(function(error, result){
 		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " withdrew " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH to their wallet.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " withdrew " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH to their wallet.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1086,7 +1073,7 @@ newleaderEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " leads the Daily with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";	
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " leads the Daily with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";	
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1098,7 +1085,7 @@ harvestedfrootEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " harvested Froot from their " + result.args.size + " Troi. Reward: " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " harvested Froot from their " + result.args.size + " Troi. Reward: " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1110,7 +1097,7 @@ becamekingEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result.args.player) + ", crowned " + idKingToName(web3.toDecimal(result.args.king)) + " King for " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result.args.player) + ", crowned " + idKingToName(web3.toDecimal(result.args.king)) + " King for " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1122,7 +1109,7 @@ resetclockEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1134,7 +1121,7 @@ doomedEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result.args.leader) + " and Purple King " + formatEthAdr(result.args.king) + "earn " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result.args.leader) + " and Purple King " + formatEthAdr(result.args.king) + "earn " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1146,7 +1133,7 @@ wondailyEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " wins the daily reward of " + + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH!";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " wins the daily reward of " + + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH!";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1158,7 +1145,7 @@ grewtroiEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " grew their Troi with " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result.args.size) + " Troi.";	
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result.args.size) + " Troi.";	
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1170,7 +1157,7 @@ paidthroneEvent.watch(function(error, result){
 		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " paid tribute to the SnailThrone! " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH has been sent.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " paid tribute to the SnailThrone! " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH has been sent.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1182,7 +1169,7 @@ boostedchestEvent.watch(function(error, result){
 		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " makes a generous " + formatEthValue2(web3.fromWei(result.args.eth,'ether')) + " ETH donation to the troiChest.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " makes a generous " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH donation to the troiChest.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
