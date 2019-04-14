@@ -191,7 +191,7 @@ var c_snailReq = 420;
 var f_buy = 0;
 var f_troiGrow = 0;
 
-var a_helpBox = 1;
+var a_helpBox = 0;
 
 var doc_thronePot = document.getElementById('thronepot');
 var doc_troiChest = document.getElementById('troichest');
@@ -228,6 +228,7 @@ document.getElementById('kingOwner3')
 ];
 
 var doc_helpBox = [
+document.getElementById('helpBox0'),
 document.getElementById('helpBox1'),
 document.getElementById('helpBox2'),
 document.getElementById('helpBox3'),
@@ -235,7 +236,6 @@ document.getElementById('helpBox4'),
 document.getElementById('helpBox5'),
 document.getElementById('helpBox6'),
 document.getElementById('helpBox7'),
-document.getElementById('helpBox8'),
 ];
 	
 /* UPDATE */
@@ -320,11 +320,11 @@ function updateLog(){
 
 //Change help box
 function changeHelpBox(_direction){
-	if(_direction == 0 && a_helpBox > 1){
+	if(_direction == 0 && a_helpBox > 0){
 		doc_helpBox[a_helpBox].style.display = "none";
 		a_helpBox -= 1;
 		doc_helpBox[a_helpBox].style.display = "block";
-	} else if(_direction == 1 && a_helpBox < 8){
+	} else if(_direction == 1 && a_helpBox < 7){
 		doc_helpBox[a_helpBox].style.display = "none";
 		a_helpBox += 1;
 		doc_helpBox[a_helpBox].style.display = "block";
