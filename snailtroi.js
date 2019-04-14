@@ -275,7 +275,7 @@ function updateText(){
 	doc_doomReward.innerHTML = a_doomReward;	
 	doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
 	doc_doomBid.innerHTML = a_doomBid;
-	doc_bonus.innerHTML = parseFloat((a_bonus / c_secondsPerDay) / 100).toFixed(3);
+	doc_bonus.innerHTML = parseFloat((a_bonus / c_secondsPerDay)).toFixed(3);
 	doc_dailyReward.innerHTML = a_dailyReward;	
 	doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
 	doc_dailyBid.innerHTML = a_dailyBid;
@@ -384,14 +384,14 @@ function updateLastFroot(){
 //Global bonus
 function updateBonus(){
 	ComputeBonus(function(result) {
-		a_bonus = parseFloat(result * 8);
+		a_bonus = result;
 	});
 }
 
 //Total bonus
 function updateTotalBonus(){
 	var _now = Math.round((new Date()).getTime() / 1000);
-	a_totalBonus = parseFloat((((_now - a_lastFroot) + a_bonus) / c_secondsPerDay) / 100).toFixed(3);
+	a_totalBonus = parseFloat((((_now - a_lastFroot) + a_bonus) / c_secondsPerDay)).toFixed(3);
 }
 
 //Number of Troi for ETH used
