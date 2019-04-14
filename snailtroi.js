@@ -1,4 +1,4 @@
-var contractAddress="0xBBA9c1B3217B414Bd7F119431A8233754E6Fc1e2"; //Ropsten v5
+var contractAddress="0x7Aef84e70DC949dB2Fb493B898f3927fDDDDED23"; //Ropsten v6
 
 //-- WEB3 DETECTION --//
 var web3;
