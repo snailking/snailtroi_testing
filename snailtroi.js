@@ -287,11 +287,11 @@ function updateText(){
 	doc_thronePot.innerHTML = a_thronePot;
 	doc_troiChest.innerHTML = a_troiChest;
 	doc_doomReward.innerHTML = a_doomReward;	
-	doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
+	
 	doc_doomBid.innerHTML = a_doomBid;
 	doc_bonus.innerHTML = parseFloat((a_bonus / c_secondsPerDay)).toFixed(3);
 	doc_dailyReward.innerHTML = a_dailyReward;	
-	doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
+	
 	doc_dailyBid.innerHTML = a_dailyBid;
 	doc_troiSize.innerHTML = a_troiSize;
 	doc_ethPerDay.innerHTML = a_ethPerDay;
@@ -302,7 +302,23 @@ function updateText(){
 	
 	for(i = 0; i < 4; i++){
 		doc_kingCost[i].innerHTML = a_kingCost[i];
-		doc_kingOwner[i].innerHTML = formatEthAdr(a_kingOwner[i]);
+		if(a_kingOwner[i] == m_account){
+			doc_kingOwner[i].innerHTML = 'YOU!';
+		} else {
+			doc_kingOwner[i].innerHTML = formatEthAdr(a_kingOwner[i]);
+		}
+	}
+	
+	if(a_doomLeader == m_account){
+		doc_doomLeader.innerHTML = 'YOU!';
+	} else {
+		doc_doomLeader.innerHTML = formatEthAdr(a_doomLeader);
+	}
+	
+	if(a_dailyLeader == m_account){
+		doc_dailyLeader.innerHTML = 'YOU!';
+	} else {
+		doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
 	}
 }
 
