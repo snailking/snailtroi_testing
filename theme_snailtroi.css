@@ -605,3 +605,8 @@ p {
     font-size: 40px;
 }
 
+/* Helpboxes */
+
+.hidden-first {
+	display: none;
+}

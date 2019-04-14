@@ -226,6 +226,17 @@ document.getElementById('kingOwner1'),
 document.getElementById('kingOwner2'),
 document.getElementById('kingOwner3')
 ];
+
+var doc_helpBox = [
+document.getElementByid('helpBox1'),
+document.getElementByid('helpBox2'),
+document.getElementByid('helpBox3'),
+document.getElementByid('helpBox4'),
+document.getElementByid('helpBox5'),
+document.getElementByid('helpBox6'),
+document.getElementByid('helpBox7'),
+document.getElementByid('helpBox8'),
+];
 	
 /* UPDATE */
 /*
@@ -310,21 +321,15 @@ function updateLog(){
 //Change help box
 function changeHelpBox(_direction){
 	if(_direction == 0 && a_helpBox > 1){
+		doc_helpBox[a_helpBox] = "none";
 		a_helpBox -= 1;
+		doc_helpBox[a_helpBox] = "block";
 	} else if(_direction == 1 && a_helpBox < 8){
+		doc_helpBox[a_helpBox] = "none";
 		a_helpBox += 1;
+		doc_helpBox[a_helpBox] = "block";
 	}
-	switch(a_helpBox){
-		case 1: doc_helpBox.innerHTML = '<h3>Grow your Troi with ETH to produce Froot.</h5><h5>When you Harvest Froot, you earn ETH.</h5><br><h5>Your rewards start at a minimum rate of 1% daily.</h5><br><h5>In addition, there is a global bonus growing up to 8% per day.</h5><br><h5>Harvest your Froot at the right time for the best rewards!</h5><br><br><br><br><h5 align="right">1/8</h5>';
-		break;
-		case 2: doc_helpBox.innerHTML = '<h3>Own any of the Four Squirrel Kings for special perks.</h5><br><h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5><h5>- RED KING: doubles the effect you get from global bonus</h5><h5>- GREEN KING: 4% in divs whenever any player Harvests their Froot</h5><h5>- PURPLE KING: 4% of the pot when the Doomclock stops</h5><br><h5>Every King is unique, owned by a single player.</h5><h5>When another player buys a King, the previous owner receives his ETH back + bonus.</h5><h5>Kings start at 0.02 ETH, and raise in price by 0.02 ETH with every flip.</h5><br><h5>A player can own several Kings.</h5><br><h5 align="right">2/8</h5>';
-		break;
-		case 3: doc_helpBox.innerHTML = '<h3>DAILY REWARD</h5><h5>Spend the most ETH in one Growth to earn 2% of the total pot at the end of the day!</h5><br><br><br><br><br><br><br><br><br><h5 align="right">3/8</h5>';
-		break;
-		case 4: doc_helpBox.innerHTML = '<h3>DOOMCLOCK</h3><h5>If the Doomclock ticks down to 0, Troi produce 10% less Froot.</h5><br><h5>To reset the Doomclock, Grow your Troi.</h5><h5>Minimum cost for a reset starts at 0.001 ETH, and rises by 0.001 ETH per Growth.</h5><br><h5>Whoever spent enough to reset the Doomclock last wins 4% of the pot when the Doomclock stops!</h5><br><br><br><br><br><br><h5 align="right">4/8</h5>';
-		break;
-	}
-}
+} 
 
 //Status of referral link for player
 function updateReferral(){
