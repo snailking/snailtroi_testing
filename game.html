@@ -89,25 +89,45 @@
 			</div><br>
 			<div class="row">
 				<div class="col-sm info info2">
-					<img src="img/king0.png" height="96px">
+					<div class="king-box">
+						<img src="img/king0.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+GROW</div>
+						</div>
+					</div>
 					<h4>Owner: <span id="kingOwner0">??</span></h5>
 					<button class="btn btn-info" onclick="webBecomeKing(0)">GET BLUE KING</button>
 					<h5>Cost: <span id="kingCost0">??</span> ETH</h5>
 				</div>
 				<div class="col-sm info info2">
-					<img src="img/king1.png" height="96px">
+					<div class="king-box">
+						<img src="img/king1.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+BONUS</div>
+						</div>
+					</div>
 					<h4>Owner: <span id="kingOwner1">??</span></h5>
 					<button class="btn btn-info" onclick="webBecomeKing(1)">GET RED KING</button>
 					<h5>Cost: <span id="kingCost1">??</span> ETH</h5>
 				</div>
 				<div class="col-sm info info2">
-					<img src="img/king2.png" height="96px">
+					<div class="king-box">
+						<img src="img/king2.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+FROOT</div>
+						</div>
+					</div>
 					<h4>Owner: <span id="kingOwner2">??</span></h5>
 					<button class="btn btn-info" onclick="webBecomeKing(2)">GET GREEN KING</button>
 					<h5>Cost: <span id="kingCost2">??</span> ETH</h5>
 				</div>
 				<div class="col-sm info info2">
-					<img src="img/king3.png" height="96px">
+					<div class="king-box">
+						<img src="img/king3.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+DOOM</div>
+						</div>
+					</div>
 					<h4>Owner: <span id="kingOwner3">??</span></h5>
 					<button class="btn btn-info" onclick="webBecomeKing(3)">GET PURPLE KING</button>
 					<h5>Cost: <span id="kingCost3">??</span> ETH</h5>
@@ -151,10 +171,23 @@
 			<div class="info" align="center">
 				<h3>How To Play</h3>
 			</div><br>
-			<h5>Grow your Troi with ETH to produce Froot. When you Harvest Froot, you earn ETH.</h5>
-			<br>
-			<h5>Your rewards start at a minimum rate of 1% daily. In addition, there is a global bonus growing up to 8% per day.</h5>
-			<h5>Harvest your Froot at the right time for the best rewards!</h5>
+			<span id="helpbox">
+				<h3>Grow your Troi with ETH to produce Froot.</h5>
+				<h5>When you Harvest Froot, you earn ETH.</h5>
+				<br>
+				<h5>Your rewards start at a minimum rate of 1% daily.</h5>
+				<h5>In addition, there is a global bonus growing up to 8% per day.</h5>
+				<br>
+				<h5>Harvest your Froot at the right time for the best rewards!</h5>
+				<br>
+				<h5 align="right">1/8</h5>
+			</span>
+			<div align="right">
+				<img class="img-help2" src="img/arrow_left.png" onclick="changeHelpBox(0)">
+				<img class="img-help2" src="img/arrow_right.png" onclick="changeHelpBox(1)">
+			</div>
+		</div>
+		</div>
 			<br>
 			<h5>Own any of the Four Squirrel Kings to get special advantages:</h5>
 			<h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5>
