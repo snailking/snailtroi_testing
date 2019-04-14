@@ -321,13 +321,13 @@ function updateLog(){
 //Change help box
 function changeHelpBox(_direction){
 	if(_direction == 0 && a_helpBox > 1){
-		doc_helpBox[a_helpBox] = "none";
+		doc_helpBox[a_helpBox].style.display = "none";
 		a_helpBox -= 1;
-		doc_helpBox[a_helpBox] = "block";
+		doc_helpBox[a_helpBox].style.display = "block";
 	} else if(_direction == 1 && a_helpBox < 8){
-		doc_helpBox[a_helpBox] = "none";
+		doc_helpBox[a_helpBox].style.display = "none";
 		a_helpBox += 1;
-		doc_helpBox[a_helpBox] = "block";
+		doc_helpBox[a_helpBox].style.display = "block";
 	}
 } 
 
