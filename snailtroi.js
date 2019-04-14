@@ -1,4 +1,4 @@
-var contractAddress="0xD2e610293Ae3a191a2BA80fF29D74b4a326961e4"; //Ropsten v7
+var contractAddress="0x31Fd1bAf37b0d1fc4C3803349ef2d73521001ED6"; //Ropsten v8
 
 //-- WEB3 DETECTION --//
 var web3;
@@ -322,10 +322,10 @@ function computeLastFroot(){
 	var _numminutes = Math.floor((_timeSinceLast % 3600) / 60);
 	var _numseconds = (_timeSinceLast % 3600) % 60;
 	var _plantString = "";			
-	if(_numhours > 0) {
-		_plantString = _numhours + " hours and " + _numminutes + " minutes";
+	if(_numhours > 1) {
+		_plantString = _numhours + " hour(s) and " + _numminutes + " minute(s)";
 	} else if(_numminutes > 0) {
-		_plantString = _numminutes + " minutes";
+		_plantString = _numminutes + " minute(s)";
 	} else {
 		_plantString = "less than a minute";
 	}
