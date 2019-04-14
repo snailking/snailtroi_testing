@@ -228,14 +228,14 @@ document.getElementById('kingOwner3')
 ];
 
 var doc_helpBox = [
-document.getElementByid('helpBox1'),
-document.getElementByid('helpBox2'),
-document.getElementByid('helpBox3'),
-document.getElementByid('helpBox4'),
-document.getElementByid('helpBox5'),
-document.getElementByid('helpBox6'),
-document.getElementByid('helpBox7'),
-document.getElementByid('helpBox8'),
+document.getElementById('helpBox1'),
+document.getElementById('helpBox2'),
+document.getElementById('helpBox3'),
+document.getElementById('helpBox4'),
+document.getElementById('helpBox5'),
+document.getElementById('helpBox6'),
+document.getElementById('helpBox7'),
+document.getElementById('helpBox8'),
 ];
 	
 /* UPDATE */
