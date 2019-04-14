@@ -321,13 +321,20 @@ function computeLastFroot(){
 	
 	var	_numhours = Math.floor(_timeSinceLast / 3600);
 	var _numminutes = Math.floor((_timeSinceLast % 3600) / 60);
-	var _numseconds = (_timeSinceLast % 3600) % 60;
+	//var _numseconds = (_timeSinceLast % 3600) % 60;
 	var _plantString = "";			
-	if(_numhours > 1) {
-		_plantString = _numhours + " hour(s) and " + _numminutes + " minute(s)";
-	} else if(_numminutes > 0) {
-		_plantString = _numminutes + " minute(s)";
-	} else {
+	if(_numhours > 0) {
+		_plantString = _numhours + " hours";
+		if(_numhours == 1) {
+			_plantString = _numhours + " hour";
+		}
+	} 
+	if(_numminutes > 1) {
+		_plantString += _numminutes + " minutes";
+	} else if(_numminutes == 1) {
+		_plantString += _numminutes + " minute";
+	}
+	if(_numhours == 0 && _numminutes == 0){
 		_plantString = "less than a minute";
 	}
 	
@@ -1035,7 +1042,7 @@ function runLog(){
 							} else if(result[i].event == "BecameKing"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result[i].args.player) + ", crowned " + idKingToName(web3.toDecimal(result[i].args.king)) + " King for " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";			
 							} else if(result[i].event == "ResetClock"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH! Your Troi remains safe for another day.";
 							} else if(result[i].event == "Doomed"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result[i].args.leader) + " and Purple King " + formatEthAdr(result[i].args.king) + "earn " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
 							} else if(result[i].event == "WonDaily"){
@@ -1117,7 +1124,7 @@ resetclockEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remain safe for another day.";
+			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remains safe for another day.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
