@@ -27,8 +27,7 @@
 					<img src="img/troi_logo.png">
 				</div>
 				<div class="col-sm" align="right">
-					<img class="img-help2" src="img/question_circle.png" onclick="showModal(help_1_modal)"></a>
-					<a href="https://etherscan.io/address/0x71a42fd60323204912468cd32a8283ed5d45a28f" target="_blank"><img class="img-help2" src="img/contract_circle.png"></a>
+					<a href="https://ropsten.etherscan.io/address/0x31fd1baf37b0d1fc4c3803349ef2d73521001ed6" target="_blank"><img class="img-help2" src="img/contract_circle.png"></a>
 					<a href="https://discord.gg/JU8P4Ru" target="_blank"><img class="img-help2" src="img/discord_circle.png"></a>
 					<a href="https://twitter.com/EtherSnailFarm" target="_blank"><img class="img-help2" src="img/twitter_circle.png"></a>
 					<a href="https://reddit.com/r/snailthrone" target="_blank"><img class="img-help2" src="img/reddit_circle.png"></a>
@@ -180,6 +179,16 @@
 				</div>
 			</div><br>
 			<div id="helpBox0">
+				<h3>WHAT DO I NEED TO PLAY?</h3>
+				<br>
+				<h5>You will need a web3 compatible wallet, such as <a href="https://metamask.io">MetaMask</a> for desktop, or <a href="https://alphawallet.com/">Alpha Wallet</a> for mobile.</h5>
+				<br>
+				<h5>You will also need ether (ETH), the currency of the Ethereum network.</h5>
+				<h5>ETH is used to pay for transaction fees, as well as play the game itself.</h5>
+				<br>
+				<h5 align="right">1/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox1">
 				<h3>Grow your Troi with ETH to produce Froot.</h5>
 				<h5>When you Harvest Froot, you earn ETH.</h5>
 				<br>
@@ -188,32 +197,94 @@
 				<br>
 				<h5>Harvest your Froot at the right time for the best rewards!</h5>
 				<br>
-				<h5 align="right">1/8</h5>
+				<h5 align="right">2/8</h5>
 			</div>
-			<div class="hidden-first" id="helpBox1">
-				<h3>Own any of the Four Squirrel Kings for special perks.</h5><br><h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5><h5>- RED KING: doubles the effect you get from global bonus</h5><h5>- GREEN KING: 4% in divs whenever any player Harvests their Froot</h5><h5>- PURPLE KING: 4% of the pot when the Doomclock stops</h5><br><h5>Every King is unique, owned by a single player.</h5><h5>When another player buys a King, the previous owner receives his ETH back + bonus.</h5><h5>Kings start at 0.02 ETH, and raise in price by 0.02 ETH with every flip.</h5><br><h5>A player can own several Kings.</h5><br><h5 align="right">2/8</h5>
+			<div class="hidden-first" id="helpBox2">
+				<h3>Own any of the Four Squirrel Kings for special perks.</h3>
+				<h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5>
+				<h5>- RED KING: doubles the effect you get from global bonus</h5>
+				<h5>- GREEN KING: 4% in divs whenever any player Harvests their Froot</h5>
+				<h5>- PURPLE KING: 4% of the pot when the Doomclock stops</h5>
+				<br>
+				<h5>Every King is unique, owned by a single player. When another player buys a King, the previous owner receives his ETH back + bonus.</h5>
+				<br>
+				<h5>Kings start at 0.02 ETH, and raise in price by 0.02 ETH with every flip. A player can own several Kings.</h5>
+				<br>
+				<h5 align="right">3/8</h5>
 			</div>
-			<div class="hidden-first" id="helpBox2"><h3>DAILY REWARD</h5><h5>Spend the most ETH in one Growth to earn 2% of the total pot at the end of the day!</h5><br><h5 align="right">3/8</h5></div>
-			<div class="hidden-first" id="helpBox3"><h3>DOOMCLOCK</h3><h5>If the Doomclock ticks down to 0, Trois produce 10% less Froot.</h5><br><h5>To reset the Doomclock, Grow your Troi.</h5><h5>Minimum cost for a reset starts at 0.001 ETH, and rises by 0.001 ETH per Growth.</h5><br><h5>Whoever spent enough to reset the Doomclock last wins 4% of the pot when the Doomclock stops!</h5><br><h5 align="right">4/8</h5></div>
-			<div class="hidden-first" id="helpBox4"><h5>SNAILTHRONE: SnailTroi is part of the SnailThrone ecosystem.</h5>
-			<h5>10% of the ETH invested in SnailTroi is saved in the thronePot as rewards to holders.</h5>
-			<h5>If there is at least 0.01 ETH in the pot, the thronePot is sent at the same time the Daily Reward is paid out.</h5>
-			<h5>Check out SnailThrone here: <a href="https://snailking.github.io/snailthrone">SNAILTHRONE</a></h5><br><h5 align="right">5/8</h5></div>
-			<div class="hidden-first" id="helpBox5"><h5 align="right">6/8</h5></div>
-			<div class="hidden-first" id="helpBox6"><h5 align="right">7/8</h5></div>
-			<div class="hidden-first" id="helpBox7"><h5 align="right">8/8</h5></div>
+			<div class="hidden-first" id="helpBox3">
+				<h3>DAILY REWARD</h3>
+				<br>
+				<h5>Spend the most ETH in one Growth to earn 2% of the total pot at the end of the day!</h5>
+				<br>
+				<h5>Only one winner can earn the Daily Reward.</h5>
+				<br>
+				<h5 align="right">4/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox4">
+				<h3>DOOMCLOCK</h3>
+				<br>
+				<h5>If the Doomclock ticks down to 0, Trois produce 10% less Froot.</h5>
+				<br>
+				<h5>To reset the Doomclock, Grow your Troi.</h5>
+				<h5>Minimum cost for a reset starts at 0.001 ETH, and rises by 0.001 ETH per Growth.</h5>
+				<br>
+				<h5>The last player who reset the Doomclock wins 4% of the pot when the Doomclock stops!</h5>
+				<br>
+				<h5 align="right">5/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox5">
+				<h3>SNAILTHRONE</h3>
+				<br>
+				<h5>SnailTroi is part of the SnailThrone ecosystem.</h5>
+				<br>
+				<h5>SnailThrone is a master game where players earn dividends from all other snail games.</h5>
+				<h5>10% of the ETH invested in SnailTroi is saved in the thronePot as rewards to holders.</h5>
+				<br>
+				<h5>The thronePot is sent at the same time the Daily Reward is paid out, if there's at least 0.01 ETH in the thronePot.</h5>
+				<br>
+				<h5>Check out SnailThrone here: <a href="https://snailking.github.io/snailthrone">SNAILTHRONE</a></h5>
+				<br>
+				<h5 align="right">6/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox6">
+				<h3>REFERRALS</h3>
+				<br>
+				<h5>On Froot harvesting, referrals give an extra 20% ETH to their referrer.</h5>
+				<h5>This is bonus ETH, not taken out of the referee rewards. There's no drawback to using referrals!</h5>
+				<br>
+				<h5>SnailTroi is best played with friends. Refer your buddies, have them refer you, it's all extra ETH in your pocket.</h5>
+				<br>
+				<h5>You are never locked into a referral. If you're unhappy with your referral, change it by Growing your Troi again.</h5>
+				<br>
+				<h5>For your referral link to be active, you need to own at least 420 snails in SnailThrone.</h5>
+				<br>
+				<h5 align="right">7/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox7">
+				<h3>WHY SNAILTROI?</h3>
+				<br>
+				<h5>Other daily ROIs come with several risks.</h5>
+				<h5>- contract is significantly premined</h5>
+				<h5>- website changes and drains your wallet</h5>
+				<h5>- unknown developer exitscams</h5>
+				<br>
+				<h5>Here's a few reasons to bet on SnailTroi:</h5>
+				<h5>1) the contract is written from scratch, verified, and easy to read. You can see for yourself how the mechanics of the game work, or ask a programmer friend to check it out.</h5>
+				<h5>2) website code is opensource and available at <a href="https://github.com/snailking/snailtroi">https://github.com/snailking/snailtroi</a>. If you want to be 100% safe, you can interact directly with the game through Etherscan, or even clone the website on your own domain!</h5>
+				<h5>3) my name is SnailKing, and I have made several games on Ethereum since last year. I'm also the recipient of a POA Games Fund grant to build another game. I'm not some anonymous dev showing up of nowhere only to disappear, but someone with a history you can check on Twitter, Discord, Medium, and on the blockchain itself through the smart contracts I've made in the past.</h5>
+				<br>
+				<h5 align="right">8/8</h5>
+			</div>
 		</div>
-		</div>
-			<br>
-			
-			<br>
-			
-			<br>
-			
-			<br>
-			
-		</div>
-
+		<br>			
+		<br>			
+		<br>			
+		<br>
+		<br>			
+		<br>			
+		<br>			
+		<br>
 		<!-- MODAL -->
 		<div id="modal_copy" class="modal">
 			<div class="modal-content">

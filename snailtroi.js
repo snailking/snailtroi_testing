@@ -367,9 +367,9 @@ function computeLastFroot(){
 	//var _numseconds = (_timeSinceLast % 3600) % 60;
 	var _plantString = "";			
 	if(_numhours > 0) {
-		_plantString = _numhours + " hours";
+		_plantString = _numhours + " hours ";
 		if(_numhours == 1) {
-			_plantString = _numhours + " hour";
+			_plantString = _numhours + " hour ";
 		}
 	} 
 	if(_numminutes > 1) {
@@ -1085,7 +1085,7 @@ function runLog(){
 							} else if(result[i].event == "BecameKing"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result[i].args.player) + ", crowned " + idKingToName(web3.toDecimal(result[i].args.king)) + " King for " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";			
 							} else if(result[i].event == "ResetClock"){
-								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH! Your Troi remains safe for another day.";
+								eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result[i].args.player) + " reset the Doomclock! Your Troi remains safe for another day. Next reset: " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
 							} else if(result[i].event == "Doomed"){
 								eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result[i].args.leader) + " and Purple King " + formatEthAdr(result[i].args.king) + "earn " + formatEthValue(web3.fromWei(result[i].args.eth,'ether')) + " ETH.";
 							} else if(result[i].event == "WonDaily"){
@@ -1131,7 +1131,7 @@ newleaderEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " leads the Daily with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";	
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " leads the Daily with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";	
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1143,7 +1143,7 @@ harvestedfrootEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " harvested Froot from their " + result.args.size + " Troi. Reward: " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " harvested Froot from their " + result.args.size + " Troi. Reward: " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1155,7 +1155,7 @@ becamekingEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] All hail " + formatEthAdr(result.args.player) + ", crowned " + idKingToName(web3.toDecimal(result.args.king)) + " King for " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] All hail " + formatEthAdr(result.args.player) + ", crowned " + idKingToName(web3.toDecimal(result.args.king)) + " King for " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1167,7 +1167,7 @@ resetclockEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH! Your Troi remains safe for another day.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " reset the Doomclock! Your Troi remains safe for another day. Next reset: " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1179,7 +1179,7 @@ doomedEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result.args.leader) + " and Purple King " + formatEthAdr(result.args.king) + "earn " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] THE DOOMCLOCK RINGS! Troi production lowers by 10%. Doomleader " + formatEthAdr(result.args.leader) + " and Purple King " + formatEthAdr(result.args.king) + "earn " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1191,7 +1191,7 @@ wondailyEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " wins the daily reward of " + + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH!";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " wins the daily reward of " + + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH!";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1203,7 +1203,7 @@ grewtroiEvent.watch(function(error, result){
 		////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result.args.size) + " Troi.";	
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " grew their Troi with " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH, and now own " + web3.toDecimal(result.args.size) + " Troi.";	
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
@@ -1227,7 +1227,7 @@ boostedchestEvent.watch(function(error, result){
 		//////////////////////console.log(result);
 		if(checkHash(result.transactionHash, result.event) != 0) {
 			date24();
-			eventlogdoc.innerHTML += "<br>[~" + datetext + "] " + formatEthAdr(result.args.player) + " makes a generous " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH donation to the troiChest.";
+			eventlogdoc.innerHTML += "<br>[" + datetext + "] " + formatEthAdr(result.args.player) + " makes a generous " + formatEthValue(web3.fromWei(result.args.eth,'ether')) + " ETH donation to the troiChest.";
 			logboxscroll.scrollTop = logboxscroll.scrollHeight;
 		}
 	}
