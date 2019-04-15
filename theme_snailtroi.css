@@ -98,13 +98,17 @@ a {
   -ms-filter: brightness(80%);
 }
 
-.img-dark {
-	height: 48px;
-	filter: brightness(60%);
-  -webkit-filter: brightness(60%);
-  -moz-filter: brightness(60%);
-  -o-filter: brightness(60%);
-  -ms-filter: brightness(60%);
+.t_link{
+	color: #b3b3b3;
+	cursor: pointer;
+}
+
+.t_link:hover{
+	filter: brightness(80%);
+  -webkit-filter: brightness(80%);
+  -moz-filter: brightness(80%);
+  -o-filter: brightness(80%);
+  -ms-filter: brightness(80%);
 }
 
 /* SnailThrone background */
@@ -324,6 +328,12 @@ p {
 	cursor: pointer;
 	-webkit-animation: pulsate-fwd 1s ease-in-out infinite both;
 	        animation: pulsate-fwd 1s ease-in-out infinite both;
+}
+
+.pulsepermafast{
+	cursor: pointer;
+	-webkit-animation: pulsate-fwd 0.5s ease-in-out infinite both;
+	        animation: pulsate-fwd 0.5s ease-in-out infinite both;
 }
 
 .pulse:hover{

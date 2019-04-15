@@ -289,7 +289,6 @@ function updateText(){
 	doc_doomReward.innerHTML = a_doomReward;	
 	
 	doc_doomBid.innerHTML = a_doomBid;
-	doc_bonus.innerHTML = parseFloat((a_bonus / c_secondsPerDay)).toFixed(3);
 	doc_dailyReward.innerHTML = a_dailyReward;	
 	
 	doc_dailyBid.innerHTML = a_dailyBid;
@@ -319,6 +318,15 @@ function updateText(){
 		doc_dailyLeader.innerHTML = 'YOU!';
 	} else {
 		doc_dailyLeader.innerHTML = formatEthAdr(a_dailyLeader);
+	}
+	
+	_bonus = parseFloat((a_bonus / c_secondsPerDay)).toFixed(3);
+	if(_bonus < 1){
+		doc_bonus.innerHTML = '<h1>' + _bonus + '%</h1>';
+	} else if (_bonus > 4){
+		doc_bonus.innerHTML = '<h1 class="pulsepermafast">' + _bonus + '%</h1>';
+	} else {
+		doc_bonus.innerHTML = '<h1 class="pulseperma">' + _bonus + '%</h1>';
 	}
 }
 
