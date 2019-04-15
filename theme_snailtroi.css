@@ -2,6 +2,7 @@
 #333333
 #666666
 #999999
+#7eb3d3
 */
 
 /* Body goes first */
@@ -37,7 +38,7 @@ body:before {
 /* white text for links */
 
 a {
-	color: #b3b3b3;
+	color: #7eb3d3;
 }
 
 /* Info container */
@@ -99,7 +100,7 @@ a {
 }
 
 .t_link{
-	color: #b3b3b3;
+	color: #7eb3d3;
 	cursor: pointer;
 }
 
