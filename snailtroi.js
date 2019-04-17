@@ -376,7 +376,7 @@ function updateHarvestReady(){
 		doc_readyGrow.innerHTML = '<button class="btn btn-info" onclick="webGrowTroi()">GROW TROI</button>';
 	} else {
 		doc_readyHarvest.innerHTML = 'Harvest not ready! Froots need 24 hours to be ripe</h5>';
-		doc_readyGrow.innerHTML = 'Wait for Froot to be ripe';
+		doc_readyGrow.innerHTML = '| Wait for Froot to be ripe';
 	}
 }
 
