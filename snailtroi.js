@@ -208,7 +208,7 @@ var doc_dailyBid = document.getElementById('dailybid');
 var doc_troiSize = document.getElementById('troisize');
 var doc_ethPerDay = document.getElementById('ethperday');
 var doc_frootReward = document.getElementById('frootreward');
-var doc_totalBonus = document.getElementById('totalbonus');
+//var doc_totalBonus = document.getElementById('totalbonus');
 var doc_playerBalance = document.getElementById('playerbalance');
 var doc_troiGrow = document.getElementById('troigrow');
 var doc_lastFroot = document.getElementById('lastfroot');
@@ -298,7 +298,7 @@ function updateText(){
 	doc_troiSize.innerHTML = a_troiSize;
 	doc_ethPerDay.innerHTML = a_ethPerDay;
 	doc_frootReward.innerHTML = parseFloat(a_frootReward).toFixed(6);
-	doc_totalBonus.innerHTML = a_totalBonus;
+	//doc_totalBonus.innerHTML = a_totalBonus;
 	doc_playerBalance.innerHTML = parseFloat(a_playerBalance).toFixed(6);
 	doc_lastFroot.innerHTML = computeLastFroot();
 	
@@ -371,9 +371,9 @@ function updateReferral(){
 //Change Harvest button if not ready
 function updateHarvestReady(){
 	if(a_readyHarvest == true){
-		doc_readyHarvest.innerHTML = '<button class="btn btn-info" onclick="webHarvestFroot()">HARVEST FROOT</button></h5>';
+		doc_readyHarvest.innerHTML = 'Total Bonus: ' + a_totalBonus + '% <button class="btn btn-info" onclick="webHarvestFroot()">HARVEST FROOT</button>';
 	} else {
-		doc_readyHarvest.innerHTML = '<h5>Harvest not ready! Wait a day</h5>';
+		doc_readyHarvest.innerHTML = 'Harvest not ready! Froots need 24 hours to be ripe</h5>';
 	}
 }
 
