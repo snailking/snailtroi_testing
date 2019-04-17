@@ -1,4 +1,4 @@
-var contractAddress="0xA1E413d638360F7eAE58b9cc77f984E2Fcce7AbD"; //Ropsten v9
+var contractAddress="0xd10a9343a0981ccd01b06303a2cd88e089bf1dc6"; //Ropsten v10
 
 //-- WEB3 DETECTION --//
 var web3;
@@ -192,6 +192,7 @@ var f_buy = 0;
 var f_troiGrow = 0;
 
 var a_helpBox = 0;
+var a_readyHarvest = false;
 
 var doc_thronePot = document.getElementById('thronepot');
 var doc_troiChest = document.getElementById('troichest');
@@ -212,6 +213,7 @@ var doc_playerBalance = document.getElementById('playerbalance');
 var doc_troiGrow = document.getElementById('troigrow');
 var doc_lastFroot = document.getElementById('lastfroot');
 var doc_helpBox = document.getElementById('helpbox');
+var doc_readyHarvest = document.getElementById('readyharvest');
 
 var doc_kingCost = [
 document.getElementById('kingCost0'),
@@ -267,6 +269,7 @@ function mainUpdate(){
 	updateReferral();
 	updateLastFroot();
 	updateSnail();
+	updateHarvestReady();
 	runLoop(checkKingCost);
 	runLoop(checkKingOwner);
 	updateText();
@@ -365,6 +368,15 @@ function updateReferral(){
 	}
 }
 
+//Change Harvest button if not ready
+function updateHarvestReady(){
+	if(a_readyHarvest == true){
+		doc_readyHarvest.innerHTML = '<button class="btn btn-info" onclick="webHarvestFroot()">HARVEST FROOT</button></h5>';
+	} else {
+		doc_readyHarvest.innerHTML = '<h5>Harvest not ready! Wait a day</h5>';
+	}
+}
+
 //Compute last Froot
 function computeLastFroot(){
 	var _now = Math.round((new Date()).getTime() / 1000);
@@ -374,6 +386,11 @@ function computeLastFroot(){
 	var _numminutes = Math.floor((_timeSinceLast % 3600) / 60);
 	//var _numseconds = (_timeSinceLast % 3600) % 60;
 	var _plantString = "";			
+	if(_numhours > 23) {
+		a_readyHarvest = true;
+	} else {
+		a_readyHarvest = false;
+	}
 	if(_numhours > 0) {
 		_plantString = _numhours + " hours ";
 		if(_numhours == 1) {
