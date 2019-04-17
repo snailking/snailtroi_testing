@@ -214,6 +214,7 @@ var doc_troiGrow = document.getElementById('troigrow');
 var doc_lastFroot = document.getElementById('lastfroot');
 var doc_helpBox = document.getElementById('helpbox');
 var doc_readyHarvest = document.getElementById('readyharvest');
+var doc_readyGrow = document.getElementById('readygrow');
 
 var doc_kingCost = [
 document.getElementById('kingCost0'),
@@ -372,8 +373,10 @@ function updateReferral(){
 function updateHarvestReady(){
 	if(a_readyHarvest == true){
 		doc_readyHarvest.innerHTML = 'Total Bonus: ' + a_totalBonus + '% <button class="btn btn-info" onclick="webHarvestFroot()">HARVEST FROOT</button>';
+		doc_readyGrow.innerHTML = '<button class="btn btn-info" onclick="webGrowTroi()">GROW TROI</button>';
 	} else {
 		doc_readyHarvest.innerHTML = 'Harvest not ready! Froots need 24 hours to be ripe</h5>';
+		doc_readyGrow.innerHTML = 'Wait for Froot to be ripe';
 	}
 }
 
