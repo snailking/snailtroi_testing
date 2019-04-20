@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Twitter card -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@ethersnailfarm" />
+		<meta name="twitter:title" content="SnailTroi" />
+		<meta name="twitter:description" content="Daily (T)Roi to end all daily Trois, on Ethereum" />
+		<meta name="twitter:image" content="https://snailking.github.io/snailtroi_testing/img/king3.png" />
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Title, Favicon -->
+		<title>SnailTroi</title>
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon">		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="theme_bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="theme_animista.css">
+		<link rel="stylesheet" type="text/css" href="theme_snailtroi.css">		
+	</head>
+	
+	<body align="center">
+		<!-- TITLE -->
+		<div class="info img-border2">
+			<div class="row">
+				<div class="col-sm">
+					<img src="img/troi_logo.png">
+				</div>
+				<div class="col-sm" align="right">
+					<a href="https://ropsten.etherscan.io/address/0xA1E413d638360F7eAE58b9cc77f984E2Fcce7AbD" target="_blank"><img class="img-help2" src="img/contract_circle.png"></a>
+					<a href="https://discord.gg/JU8P4Ru" target="_blank"><img class="img-help2" src="img/discord_circle.png"></a>
+					<a href="https://twitter.com/EtherSnailFarm" target="_blank"><img class="img-help2" src="img/twitter_circle.png"></a>
+					<a href="https://reddit.com/r/snailthrone" target="_blank"><img class="img-help2" src="img/reddit_circle.png"></a>
+					<a href="https://medium.com/@thesnailking/tron-is-facing-a-daily-roi-craze-what-can-we-do-about-it-d41587da3e61" target="_blank"><img class="img-help2" src="img/medium_circle.png"></a>
+					<a href="https://t.me/snailthrone" target="_blank"><img class="img-help2" src="img/telegram_circle.png"></a>
+					<a href="https://snailking.github.io/snailthrone" target="_blank"><img class="img-help2" src="img/snailthrone_circle.png"></a>
+				</div>
+			</div>
+		</div>
+		<!-- MAIN -->
+		<div class="jumbotron" align="center">
+			<div class="container">
+				<h1 style="display: inline-block; vertical-align: middle;"><span id="troichest">???</span></h1> <img src="img/ether.png" height="48px"> 
+			</div><br>
+			<div class="row">
+				<div class="col-sm info info2">
+					<h3>DOOMCLOCK - <span id="doomreward">??????</span> ETH</h3>
+					<h3><span id="doomtimer">??:??:??</span></h3><br>
+					<h4>Doom Leader: <span id="doomleader">??</span></h4>
+					<h5>Grow for <span id="doombid">??</span> ETH to lead</h5>
+				</div>
+				<div class="col-sm info info2">
+					<br>
+					<h1>BONUS</h2>
+					<span id="bonus"><h1>?.????%</h1></span>
+					<br>
+				</div>
+				<div class="col-sm info info2">
+					<h3>DAILY - <span id="dailyreward">??????</span> ETH</h3>
+					<h3><span id="dailytimer">??:??:??</span></h3><br>
+					<h4>Daily Leader: <span id="dailyleader">??</span></h4>
+					<h5>Grow for above <span id="dailybid">??</span> ETH to lead</h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/tree.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="troisize">???</span> (<span id="ethperday">???</span> ETH per day)</h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5><input type="text" id="fieldBuy" value="0.02" size="3"> ETH to get <span id="troigrow">???</span> Troi <span id="readygrow"><button class="btn btn-info" onclick="webGrowTroi()">GROW TROI</button></span></h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/acorn.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="frootreward">???</span> (Last Harvest: <span id="lastfroot">??</span> ago)</h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5><span id="readyharvest">Total Bonus: ??% <button class="btn btn-info" onclick="webHarvestFroot()">HARVEST FROOT</button></span></h5>
+				</div>
+			</div><br>
+			<div class="info row">
+				<div class="col-sm" align="left">
+					<img src="img/ether.png" height="32px"> <h5 style="display: inline-block; vertical-align: middle;"><span id="playerbalance">???</span></h5>
+				</div>
+				<div class="col-sm" align="right">
+					<h5><button class="btn btn-info" onclick="webWithdrawBalance()">WITHDRAW BALANCE</button></h5>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-sm info info2">
+					<div class="king-box">
+						<img src="img/king0.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+GROW</div>
+						</div>
+					</div>
+					<h4>Owner: <span id="kingOwner0">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(0)">GET BLUE KING</button>
+					<h5>Cost: <span id="kingCost0">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<div class="king-box">
+						<img src="img/king1.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+BONUS</div>
+						</div>
+					</div>
+					<h4>Owner: <span id="kingOwner1">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(1)">GET RED KING</button>
+					<h5>Cost: <span id="kingCost1">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<div class="king-box">
+						<img src="img/king2.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+FROOT</div>
+						</div>
+					</div>
+					<h4>Owner: <span id="kingOwner2">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(2)">GET GREEN KING</button>
+					<h5>Cost: <span id="kingCost2">??</span> ETH</h5>
+				</div>
+				<div class="col-sm info info2">
+					<div class="king-box">
+						<img src="img/king3.png" class="king-image" height="96px">
+						<div class="king-middle">
+							<div class="king-text">+DOOM</div>
+						</div>
+					</div>
+					<h4>Owner: <span id="kingOwner3">??</span></h5>
+					<button class="btn btn-info" onclick="webBecomeKing(3)">GET PURPLE KING</button>
+					<h5>Cost: <span id="kingCost3">??</span> ETH</h5>
+				</div>
+			</div>
+		</div>
+		<!-- REFERRAL -->
+		<div class="jumbotron" align="center">
+			<div class="info">
+				<h3>Your Referral Link:</h3>
+				<h5><a class="t_link" id="playerreflink" onclick="copyRef()">???</a></h5>
+				<input id="copytextthing" style="display:none;" type="text">
+			</div><br>
+			<h5>Referral Links are activated by owning at least 420 snails in SnailThrone.</h5>
+			<br><a href="https://snailking.github.io/snailthrone" target="_blank"><img class="pulse" height="64" src="img/snailthrone_circle.png"></a><br>
+			<br><h5>Get 20% extra ETH from each Harvest of your Referee!</h5>
+		</div>
+		<!-- LOG -->
+		<div class="jumbotron info">
+			<div class="row">
+				<div class="col-sm">
+					<h3 style="display: inline-block;">EVENTS</h3>
+				</div>
+				<div class="col-sm" align="right">
+					<button class="btn btn-info" onclick="runLog()">Get Past Events</button>
+				</div>
+			</div>
+			<div class="scroll-box info" id="logboxscroll">
+				<p><span id="eventlog">[Waiting for events...]</span></p>
+			</div>
+		</div>
+		<!-- THRONEPOT -->
+		<div class="jumbotron" align="center">
+			<div class="info">
+				<h3>ThronePot: <span id="thronepot">???</span> ETH</h3>
+			</div><br>
+			<h5>SnailThrone holders are rewarded with the ThronePot, sent automatically when the Daily ends.</h5>
+		</div>
+		<!-- INFO -->
+		<div class="jumbotron">
+			<div class="info">
+				<div class="row">
+					<div class="col-sm">
+						<h3>How To Play</h3>
+					</div>
+					<div class="col-sm" align="right">
+						<img class="img-help2" src="img/arrow_left.png" onclick="changeHelpBox(0)">
+						<img class="img-help2" src="img/arrow_right.png" onclick="changeHelpBox(1)">
+					</div>
+				</div>
+			</div><br>
+			<div id="helpBox0">
+				<h3>WHAT DO I NEED TO PLAY?</h3>
+				<br>
+				<h5>You will need a web3 compatible wallet, such as <a href="https://metamask.io">MetaMask</a> for desktop, or <a href="https://alphawallet.com/">Alpha Wallet</a> for mobile.</h5>
+				<br>
+				<h5>You will also need ether (ETH), the currency of the Ethereum network.</h5>
+				<h5>ETH is used to pay for transaction fees, as well as play the game itself.</h5>
+				<br>
+				<h5 align="right">1/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox1">
+				<h3>Grow your Troi with ETH to produce Froot.</h5>
+				<h5>When you Harvest Froot, you earn ETH.</h5>
+				<br>
+				<h5>Your rewards start at a minimum rate of 1% daily.</h5>
+				<h5>In addition, there is a global bonus growing up to 8% per day.</h5>
+				<br>
+				<h5>Your Froot is ready to Harvest every 24 hours.</h5>
+				<h5>Time your Harvest well to get the highest bonus!</h5>
+				<br>
+				<h5 align="right">2/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox2">
+				<h3>Own any of the Four Squirrel Kings for special perks.</h3>
+				<h5>- BLUE KING: 4% in divs whenever any player Grows their Troi</h5>
+				<h5>- RED KING: doubles the effect you get from global bonus</h5>
+				<h5>- GREEN KING: 4% in divs whenever any player Harvests their Froot</h5>
+				<h5>- PURPLE KING: 4% of the pot when the Doomclock stops</h5>
+				<br>
+				<h5>Every King is unique, owned by a single player. When another player buys a King, the previous owner receives his ETH back + bonus.</h5>
+				<br>
+				<h5>Kings start at 0.02 ETH, and raise in price by 0.02 ETH with every flip. A player can own several Kings.</h5>
+				<br>
+				<h5 align="right">3/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox3">
+				<h3>DAILY REWARD</h3>
+				<br>
+				<h5>Spend the most ETH in one Growth to earn 2% of the total pot at the end of the day!</h5>
+				<br>
+				<h5>Only one winner can earn the Daily Reward.</h5>
+				<br>
+				<h5>(Note: Growing your Troi Harvests any Froot you have at the same time.)
+				<br>
+				<h5 align="right">4/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox4">
+				<h3>DOOMCLOCK</h3>
+				<br>
+				<h5>If the Doomclock ticks down to 0, Trois produce 10% less Froot.</h5>
+				<br>
+				<h5>To reset the Doomclock, Grow your Troi.</h5>
+				<h5>Minimum cost for a reset starts at 0.001 ETH, and rises by 0.001 ETH per Growth.</h5>
+				<br>
+				<h5>The last player who reset the Doomclock wins 4% of the pot when the Doomclock stops!</h5>
+				<br>
+				<h5 align="right">5/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox5">
+				<h3>SNAILTHRONE</h3>
+				<br>
+				<h5>SnailTroi is part of the SnailThrone ecosystem.</h5>
+				<br>
+				<h5>SnailThrone is a master game where players earn dividends from all other snail games.</h5>
+				<h5>10% of the ETH invested in SnailTroi is saved in the thronePot as rewards to holders.</h5>
+				<br>
+				<h5>The thronePot is sent at the same time the Daily Reward is paid out, if there's at least 0.01 ETH in the thronePot.</h5>
+				<br>
+				<h5>Check out SnailThrone here: <a href="https://snailking.github.io/snailthrone">SNAILTHRONE</a></h5>
+				<br>
+				<h5 align="right">6/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox6">
+				<h3>REFERRALS</h3>
+				<br>
+				<h5>On Froot harvesting, referrals give an extra 20% ETH to their referrer.</h5>
+				<h5>This is bonus ETH, not taken out of the referee rewards. There's no drawback to using referrals!</h5>
+				<br>
+				<h5>SnailTroi is best played with friends. Refer your buddies, have them refer you, it's all extra ETH in your pocket.</h5>
+				<br>
+				<h5>You are never locked into a referral. If you're unhappy with your referral, change it by Growing your Troi again.</h5>
+				<br>
+				<h5>For your referral link to be active, you need to own at least 420 snails in SnailThrone.</h5>
+				<br>
+				<h5 align="right">7/8</h5>
+			</div>
+			<div class="hidden-first" id="helpBox7">
+				<h3>WHY TRUST SNAILTROI?</h3>
+				<br>
+				<h5>1) the contract is written from scratch, verified, and easy to read</h5>
+				<h5>You can see for yourself how the mechanics of the game work, or ask a programmer friend to check it out.</h5>
+				<br>
+				<h5>2) website code is opensource and available at <a href="https://github.com/snailking/snailtroi">https://github.com/snailking/snailtroi</a></h5>
+				<h5>If you want to be 100% safe, you can interact directly with the game through Etherscan, or even clone the website on your own domain!</h5>
+				<br>
+				<h5>3) a known developer with a history in blockchain games</h5>
+				<h5>My name is SnailKing. You can check what I've done on <a href="https://twitter.com/ethersnailfarm">Twitter</a>, <a href="https://discord.gg/JU8P4Ru">Discord</a>, <a href="https://medium.com/@thesnailking/">Medium</a>, and on the blockchain itself through <a href="https://etherscan.io/address/0xabf3e252006d805cce3c7219a929b83465f2a46e">my address</a> and <a href="https://etherscan.io/address/0x261d650a521103428c6827a11fc0cbce96d74dbc">my smart contracts</a></h5>
+				<h5>I'm also the recipient of a <a href="https://gitcoin.co/grants/92/eggforce-new-idle-game-on-poa-core-2">POA Games Fund</a> grant to build a bigger game, <a href="https://snailking.github.io/eggforce/">Eggforce.</a></h5>
+				<h5>Some devs come out of nowhere and disappear just as fast. I'm here for the long run!</h5>
+				<br>
+				<h5 align="right">8/8</h5>
+			</div>
+		</div>
+		<br>			
+		<br>			
+		<br>			
+		<br>
+		<br>			
+		<br>			
+		<br>			
+		<br>
+		<!-- MODAL -->
+		<div id="modal_copy" class="modal">
+			<div class="modal-content">
+			<!--<span class="close">&times;</span>-->
+				<div id="modal_internal">
+				</div>
+			</div>
+		</div>
+		<!-- JAVASCRIPT -->
+		<script src="snailtroi2.js"></script>				
+	</body>
+</html>
